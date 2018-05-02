@@ -6,23 +6,34 @@ import { AppComponent } from './app.component';
 
 //Routing
 import { routing } from './app.routes';
+import { Routes , Router, RouterModule } from '@angular/router';
 //Service
-import { GlobalService } from './app.global.service';
-
+import { AppGlobals } from './app.global.service';
+import { RouterService } from './_services/router.service'
 // Layouts
 import { HomeLayoutComponent } from './layouts/home-layout.component';
 
 //Component
 import { NotFoundComponent } from './not-found/not-found.component';
 
+/*let appRoutes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'home', component: HomeLayoutComponent },
+  //{ path: 'coding', component: HomeLayoutComponent },
+  { path: '**',     component: NotFoundComponent }
+];*/
+
 @NgModule({
   declarations: [
     AppComponent, HomeLayoutComponent, NotFoundComponent
   ],
   imports: [
-    BrowserModule, HttpModule, FormsModule, routing,
+    BrowserModule, HttpModule, FormsModule, 
+    //RouterModule.forRoot(appRoutes),
+    routing,
   ],
-  providers: [GlobalService],
+  providers: [AppGlobals,RouterService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

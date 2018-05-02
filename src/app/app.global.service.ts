@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class GlobalService {
+export class AppGlobals {
 
   constructor() { }
 
   readonly baseAppUrl: string = 'http://localhost:4200/';
-  readonly baseAPIUrl: string = 'https://api.github.com/';
+  readonly baseAPIUrl: string = 'http://www.codingprogrammer.com/api/';
 }

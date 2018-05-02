@@ -10,4 +10,20 @@ export class HomeLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void { }
+
+  /*this.coreService.getCoreEndpoints()
+      .subscribe(
+        (endpoints) => {
+          _.forEach(Object.keys(endpoints), (e: string) => {
+            this.router.config.push({
+              path: `core/${e}`,
+              data: {
+                name: e
+              },
+              component: MyComponent
+            });
+          });
+          this.router.resetConfig(this.router.config);
+        }
+      );*/
 }
