@@ -9,7 +9,7 @@ import { Routes , Router, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component'
 
 import { RouterService } from './_services/router.service';
-import { AboutUserResolve } from './_services/about-user-resolve.service';
+import { CategoryResolve } from './_services/category-resolve.service';
 // Layouts
 import { HomeLayoutComponent } from './layouts/home-layout.component';
 
@@ -26,36 +26,13 @@ const appRoutes: Routes = [
     path: ':username',
     component: HomeLayoutComponent,
     resolve: {
-          user: AboutUserResolve
+          category: CategoryResolve
         }
   },
   
   { path: '**',     component: NotFoundComponent },
 ];
 
-export class AppRoute {
-  
-  /*constructor(private router:Router, private routerService:RouterService) {
-    // This works
-      // Pushing the same route as in routes.json
-      // ----------------------
-      appRoutes.push({ path: 'contact', component: HomeLayoutComponent })
-      router.resetConfig(appRoutes);
-
-      // This does works
-      // By just console log this anonymous object, the loaded routing from the 
-      // json data will work. 
-      // ----------------------
-      //console.log({ loadChildren: './contact/contact.module#ContactModule' })
-      this.routerService.getCategories().subscribe((result) => { 
-        result[0].category_link.forEach((route) => { console.log(route);
-          appRoutes.push({ path: route, component: HomeLayoutComponent })
-        });
-        console.log(appRoutes);
-        this.router.resetConfig(appRoutes);
-      });
-  }*/
-}
 export const routing = RouterModule.forRoot(appRoutes, {
       useHash: false
     });
