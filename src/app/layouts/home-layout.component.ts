@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+ 
 @Component({
   selector: 'app-dashboard',
   //template: '<router-outlet></router-outlet>',
@@ -11,6 +12,38 @@ export class HomeLayoutComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  /*ngOnInit() {
+  	let routes = this.router.config;
+    this.routerService.getCategories().subscribe((result) => { 
+        result[0].category_link.forEach((route) => { //console.log(route);
+          routes.push({ path: route, component: HomeLayoutComponent })
+        });
+        console.log(routes);
+        //this.router.resetConfig(router);
+      });
+    this.router.resetConfig(routes);
+}*/
+
+    // This works
+      // Pushing the same route as in routes.json
+      // ----------------------
+      /*let routes = this.router.config;
+      routes.push({ path: 'contact', component: HomeLayoutComponent })
+      this.router.resetConfig(routes);*/
+
+      /*let r: Route = {
+          path: 'pop',
+          component: HomeLayoutComponent
+      };
+      this.router.resetConfig([r, ...this.router.config]);*/
+
+      // This does works
+      // By just console log this anonymous object, the loaded routing from the 
+      // json data will work. 
+      // ----------------------
+      //console.log({ loadChildren: './contact/contact.module#ContactModule' })
+      
+  
   /*this.coreService.getCoreEndpoints()
       .subscribe(
         (endpoints) => {

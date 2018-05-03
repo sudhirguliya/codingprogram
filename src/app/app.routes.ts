@@ -8,7 +8,8 @@ import { Routes , Router, RouterModule } from '@angular/router';
 //import { AuthGuard } from './_guards/index';
 import { NotFoundComponent } from './not-found/not-found.component'
 
-import { RouterService } from './_services/router.service'
+import { RouterService } from './_services/router.service';
+import { AboutUserResolve } from './_services/about-user-resolve.service';
 // Layouts
 import { HomeLayoutComponent } from './layouts/home-layout.component';
 
@@ -21,17 +22,20 @@ const appRoutes: Routes = [
  // { path: 'register', component: SignupComponent },
   { path: 'home',   component: HomeLayoutComponent }, // , pathMatch: 'full'
   // { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  /*{
-    path: ':id',
-    component: HomeLayoutComponent
-  },*/
+  {
+    path: ':username',
+    component: HomeLayoutComponent,
+    resolve: {
+          user: AboutUserResolve
+        }
+  },
   
   { path: '**',     component: NotFoundComponent },
 ];
 
 export class AppRoute {
   
-  constructor(private router:Router, private routerService:RouterService) {
+  /*constructor(private router:Router, private routerService:RouterService) {
     // This works
       // Pushing the same route as in routes.json
       // ----------------------
@@ -50,7 +54,7 @@ export class AppRoute {
         console.log(appRoutes);
         this.router.resetConfig(appRoutes);
       });
-  }
+  }*/
 }
 export const routing = RouterModule.forRoot(appRoutes, {
       useHash: false

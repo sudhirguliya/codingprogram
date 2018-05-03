@@ -16,10 +16,10 @@ import { HomeLayoutComponent } from './layouts/home-layout.component';
 //Component
 import { NotFoundComponent } from './not-found/not-found.component';
 
-var appRoutes: Route[] = [
+var routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeLayoutComponent },
-  //{ path: 'coding', component: HomeLayoutComponent },
+  { path: ':id', component: HomeLayoutComponent },
   { path: '**',     component: NotFoundComponent }
 ];
 
@@ -29,38 +29,41 @@ var appRoutes: Route[] = [
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, 
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(routes) //, { enableTracing: true })
     //routing,
+  ],
+  exports: [
+    RouterModule
   ],
   providers: [AppGlobals,RouterService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private router:Router, private routerService:RouterService) {
-    // This works
-      // Pushing the same route as in routes.json
-      // ----------------------
-      /*let routes = this.router.config;
-      routes.push({ path: 'contact', component: HomeLayoutComponent })
-      this.router.resetConfig(routes);*/
-
-      /*let r: Route = {
-          path: 'pop',
-          component: HomeLayoutComponent
-      };
-      this.router.resetConfig([r, ...this.router.config]);*/
-
-      // This does works
-      // By just console log this anonymous object, the loaded routing from the 
-      // json data will work. 
-      // ----------------------
-      //console.log({ loadChildren: './contact/contact.module#ContactModule' })
-      this.routerService.getCategories().subscribe((result) => { 
-        result[0].category_link.forEach((route) => { console.log(route);
-          appRoutes.push({ path: route, component: HomeLayoutComponent })
+  constructor(router: Router, routerModule: RouterModule, private routerService:RouterService) {
+    /*router.resetConfig([
+			 { path: 'team/:id', component: HomeLayoutComponent, children: [
+			   { path: 'simple', component: HomeLayoutComponent },
+			   { path: 'user/:name', component: HomeLayoutComponent }
+			 ] }
+			]);*/
+    var config = router.config;
+    //console.log('Routes: ', JSON.stringify(routes, undefined, 1));
+    config.push({path: 'new', component: HomeLayoutComponent});
+    this.routerService.getCategories().subscribe((result) => { 
+        result[0].category_link.forEach((route) => { //console.log(route);
+          config.push({ path: route, component: HomeLayoutComponent })
         });
-        console.log(appRoutes);
-        this.router.resetConfig(appRoutes);
-      });
+        //console.log(routes);
+        
+        config.forEach((x, i) => {
+	      //console.log(`${i}: ${	JSON.stringify(x, undefined, 1)}`);
+
+	    });
+	    router.resetConfig(config);
+	    console.log(router.config)
+	    	
+    });
+
+    
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { contentHeaders } from '../../common/headers';
 import { AppGlobals } from '../app.global.service';
-//import { Category } from '../_models/index';
+import { Category } from '../_models/index';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 @Injectable()
@@ -15,6 +15,9 @@ export class RouterService {
 
 getCategories() {
         return this.http.get(this._global.baseAPIUrl +'coding/categories').map((res) => res.json());
+    }
+getCategory(categoty:Category) {
+        return this.http.post(this._global.baseAPIUrl +'coding/category, category').map((res) => res.json());
     }
 
     // private helper methods
