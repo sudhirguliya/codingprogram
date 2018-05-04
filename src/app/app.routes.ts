@@ -10,6 +10,9 @@ import { NotFoundComponent } from './not-found/not-found.component'
 
 import { RouterService } from './_services/router.service';
 import { CategoryResolve } from './_services/category-resolve.service';
+import { SubCategoryResolve } from './_services/subcategory-resolve.service';
+import { PostResolve } from './_services/post-resolve.service';
+
 // Layouts
 import { HomeLayoutComponent } from './layouts/home-layout.component';
 
@@ -23,14 +26,29 @@ const appRoutes: Routes = [
   { path: 'home',   component: HomeLayoutComponent }, // , pathMatch: 'full'
   // { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   {
-    path: ':username',
+    path: ':category',
     component: HomeLayoutComponent,
     resolve: {
           category: CategoryResolve
         }
   },
-  
-  { path: '**',     component: NotFoundComponent },
+  {
+    path: ':category/:post',
+    component: HomeLayoutComponent,
+    resolve: {
+          post: PostResolve
+        }
+  },
+  /*{
+    path: ':category/:subcategory',
+    component: HomeLayoutComponent,
+    resolve: {
+          subcategory: PostResolve
+        }
+  },*/
+
+  { path: '404', component: NotFoundComponent },
+  { path: '**',  component: NotFoundComponent },
 ];
 
 export const routing = RouterModule.forRoot(appRoutes, {

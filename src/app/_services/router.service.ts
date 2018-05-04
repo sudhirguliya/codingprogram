@@ -25,6 +25,17 @@ getCategory(category: Category) {
         return this.http.post(this._global.baseAPIUrl +'coding/category',   body, options).map((res) => res.json());
     }
 
+getPost(category: Category, post : string) {
+    var obj = { category_link: category, post : post };
+
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+        let options = new RequestOptions( {method: RequestMethod.Post, headers: headers });
+
+        let body = this.serializeObj(obj);
+
+        return this.http.post(this._global.baseAPIUrl +'coding/postdata',   body, options).map((res) => res.json());
+    }
+
     // private helper methods
 
     private serializeObj(obj) {

@@ -5,14 +5,14 @@ import { RouterService } from '../_services/router.service'
 
 @Injectable()
 
-export class CategoryResolve{
+export class SubCategoryResolve{
 
   constructor(private service: RouterService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot) {
-    let category = route.params['category'];
+    let subcategory = route.params['subcategory'];
 
-    return this.service.getCategory(category).subscribe(category => {
+    return this.service.getCategory(subcategory).subscribe(category => {
       //console.log(category);
       if (category.status == true) {
         //console.log('hi');
