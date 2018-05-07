@@ -39,13 +39,13 @@ const appRoutes: Routes = [
           post: PostResolve
         }
   },
-  /*{
-    path: ':category/:subcategory',
+  {
+    path: ':category/:subcategory/:post',
     component: HomeLayoutComponent,
     resolve: {
-          subcategory: PostResolve
+          post: PostResolve
         }
-  },*/
+  },
 
   { path: '404', component: NotFoundComponent },
   { path: '**',  component: NotFoundComponent },

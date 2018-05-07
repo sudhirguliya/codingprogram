@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 
 //Routing
 import { routing } from './app.routes';
-import { Route, Routes , Router, RouterModule } from '@angular/router';
+//import { Route, Routes , Router, RouterModule } from '@angular/router';
 //Service
 import { AppGlobals } from './app.global.service';
 import { RouterService } from './_services/router.service';
 import { CategoryResolve } from './_services/category-resolve.service';
 import { SubCategoryResolve } from './_services/subcategory-resolve.service';
 import { PostResolve } from './_services/post-resolve.service';
+//import { GlobalEventsManager } from './_services/global-events-manager'
 // Layouts
 import { HomeLayoutComponent } from './layouts/home-layout.component';
 
 //Component
+//import { MenuComponent } from './menu.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
@@ -27,9 +29,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserModule, HttpModule, FormsModule, 
     //RouterModule.forRoot(routes) //, { enableTracing: true })
     routing,
-  ],
-  exports: [
-    RouterModule
   ],
   providers: [AppGlobals,RouterService, CategoryResolve, SubCategoryResolve, PostResolve],
   bootstrap: [AppComponent]

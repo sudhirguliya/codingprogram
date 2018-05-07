@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewEncapsulation } from '@angular/core';
 import { Http, Headers, RequestOptions, Response, RequestMethod } from '@angular/http';
 import { contentHeaders } from '../../common/headers';
 import { AppGlobals } from '../app.global.service';
@@ -33,7 +33,7 @@ getPost(category: Category, post : string) {
 
         let body = this.serializeObj(obj);
 
-        return this.http.post(this._global.baseAPIUrl +'coding/postdata',   body, options).map((res) => res.json());
+        return this.http.post(this._global.baseAPIUrl +'coding/posturl',   body, options).map((res) => res.json());
     }
 
     // private helper methods
