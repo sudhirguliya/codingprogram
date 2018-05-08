@@ -30,7 +30,7 @@ export class LatestPostComponent {
 
     ngOnInit() {
         // get dummy data
-        this.http.get(this._global.baseAPIUrl +'coding/postdata')
+        this.http.get(this._global.baseAPIUrl +'coding/postdata?limit=56')
             .map((response: Response) => response.json())
             .subscribe(data => {
                 // set items to json response
