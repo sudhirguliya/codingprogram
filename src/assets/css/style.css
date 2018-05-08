@@ -3342,6 +3342,7 @@ img{
 
 .news-block-two.with-margin{
 	margin-bottom:40px;
+	min-height: 525px;
 }
 
 .news-block-two .inner-box{

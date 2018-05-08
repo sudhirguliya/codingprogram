@@ -13,24 +13,30 @@ import { RouterService } from './_services/router.service';
 import { CategoryResolve } from './_services/category-resolve.service';
 import { SubCategoryResolve } from './_services/subcategory-resolve.service';
 import { PostResolve } from './_services/post-resolve.service';
+import { PagerService } from './_services/pager.service';
 //import { GlobalEventsManager } from './_services/global-events-manager'
 // Layouts
 import { HomeLayoutComponent } from './layouts/home-layout.component';
 
 //Component
-//import { MenuComponent } from './menu.component';
+import { LatestPostComponent } from './layouts/latest-post.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+
+//Pipe
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent, HomeLayoutComponent, NotFoundComponent
+    AppComponent, HomeLayoutComponent, NotFoundComponent, LatestPostComponent,
+    TruncatePipe, EscapeHtmlPipe
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, 
     //RouterModule.forRoot(routes) //, { enableTracing: true })
     routing,
   ],
-  providers: [AppGlobals,RouterService, CategoryResolve, SubCategoryResolve, PostResolve],
+  providers: [AppGlobals,RouterService, CategoryResolve, SubCategoryResolve, PostResolve, PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
