@@ -23,7 +23,8 @@
                                             <li><span class="icon fa fa-eye"></span>2740</li>
                                         </ul> -->
                                         <!-- [innerText]="item.page_description " -->
-                                        <div class="text">{{item.page_description | truncate : 200 : true}}
+                                        <!-- [innerHTML]="item.page_description | keepHtml" -->
+                                        <div class="text" >{{item.page_description | truncate : 200 : true}}
                                         </div>
                                     </div>
                                 </div>

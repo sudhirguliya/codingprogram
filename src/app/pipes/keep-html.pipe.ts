@@ -9,12 +9,15 @@ export class EscapeHtmlPipe implements PipeTransform {
   transform(str) {
     this.sanitizer.bypassSecurityTrustHtml(str);
 
-	str=str.replace(/<\s*br\/*>/gi, "\n");
+    var regex = /(<([^>]+)>)/ig;
+	return str.replace(regex, "");
+
+	/*str=str.replace(/<\s*br\/*>/gi, "\n");
 	str=str.replace(/<\s*a.*href="(.*?)".*>(.*?)<\/a>/gi, " $2 (Link->$1) ");
 	str=str.replace(/<\s*\/*.+?>/ig, "\n");
-	str=str.replace(/ {2,}/gi, " ");
-	str=str.replace(/\n+\s*/gi, "\n\n");
+	str=str.replace(/ {2,}/gi, " "); */
+	//str=str.replace(/\n+\s*/gi, "\n\n");
     //return content ? String(content).replace(/<[^>]+>/gm, '') : '';
-    return str;
+    //return str;
   }
 }
