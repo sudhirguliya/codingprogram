@@ -28,6 +28,8 @@ export class LatestPostComponent {
     // paged items
     pagedItems: any[];
 
+    isValid : boolean = false;
+
     ngOnInit() {
         // get dummy data
         this.http.get(this._global.baseAPIUrl +'coding/postdata?limit=56')

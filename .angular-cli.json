@@ -19,9 +19,21 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        ".././node_modules/bootstrap/dist/css/bootstrap.css"
       ],
-      "scripts": [],
+      "scripts": [
+        ".././node_modules/jquery/dist/jquery.js",
+        ".././node_modules/bootstrap/dist/js/bootstrap.js",
+        ".././node_modules/fancybox/dist/js/jquery.fancybox.pack.js",
+        ".././node_modules/fancybox/dist/helpers/js/jquery.fancybox-media.js",
+        "../src/assets/js/owl.js",
+        "../src/assets/js/appear.js",
+        "../src/assets/js/wow.js",
+        "../src/assets/js/jquery.mCustomScrollbar.concat.min.js",
+        "../src/assets/js/color-settings.js",
+        "../src/assets/js/script.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
