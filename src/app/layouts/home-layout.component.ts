@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterService } from '../_services/router.service'
 
  
 @Component({
@@ -8,10 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private routerservice : RouterService) { }
 
-  ngOnInit(): void { }
+  // array of all items to be paged
+  private allCategories: any[];
+  private allSubCategories: any[];
 
+  ngOnInit(): void {
+    this.showMenu();
+  }
+
+  showMenu() {
+    this.routerservice.getCategories().subscribe(category => {
+      console.log(category);
+      if (category.status == true) {
+        //console.log('hi');
+        this.allCategories = category.allCategories;
+        //this.allSubCategories = category.allCategories.subcategory;
+        console.log(this.allCategories);
+      } else {
+        console.log('bye menu');
+        //this.location.replaceState('/'); // clears browser history so they can't navigate with back button
+        // navigate the user back to the about page
+        //this.router.navigate(['/home']);
+        return false;
+      }
+    });
+  }
   /*ngOnInit() {
   	let routes = this.router.config;
     this.routerService.getCategories().subscribe((result) => { 
