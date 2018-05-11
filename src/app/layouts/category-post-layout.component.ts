@@ -5,9 +5,9 @@ import { AppGlobals } from '../app.global.service';
 @Component({
   selector: 'app-dashboard',
   //template: '<router-outlet></router-outlet>',
-  templateUrl: './home-layout.component.html'
+  templateUrl: './category-post-layout.component.html'
 })
-export class HomeLayoutComponent implements OnInit {
+export class CategoryPostLayoutComponent implements OnInit {
 
   constructor(private _global: AppGlobals, private routerservice : RouterService) { }
 

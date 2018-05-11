@@ -15,6 +15,8 @@ import { PostResolve } from './_services/post-resolve.service';
 
 // Layouts
 import { HomeLayoutComponent } from './layouts/home-layout.component';
+import { CategoryPostLayoutComponent } from './layouts/category-post-layout.component';
+
 
 // Define which component should be loaded based on the current URL
 const appRoutes: Routes = [
@@ -27,21 +29,21 @@ const appRoutes: Routes = [
   // { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   {
     path: ':category',
-    component: HomeLayoutComponent,
+    component: CategoryPostLayoutComponent,
     resolve: {
           category: CategoryResolve
         }
   },
   {
     path: ':category/:post',
-    component: HomeLayoutComponent,
+    component: CategoryPostLayoutComponent,
     resolve: {
           post: PostResolve
         }
   },
   {
     path: ':category/:subcategory/:post',
-    component: HomeLayoutComponent,
+    component: CategoryPostLayoutComponent,
     resolve: {
           post: PostResolve
         }

@@ -17,6 +17,7 @@ import { PagerService } from './_services/pager.service';
 //import { GlobalEventsManager } from './_services/global-events-manager'
 // Layouts
 import { HomeLayoutComponent } from './layouts/home-layout.component';
+import { CategoryPostLayoutComponent } from './layouts/category-post-layout.component';
 
 //Component
 import { LatestPostComponent } from './layouts/latest-post.component';
@@ -28,7 +29,7 @@ import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent, HomeLayoutComponent, NotFoundComponent, LatestPostComponent,
+    AppComponent, HomeLayoutComponent, NotFoundComponent, LatestPostComponent, CategoryPostLayoutComponent,
     TruncatePipe, EscapeHtmlPipe
   ],
   imports: [
