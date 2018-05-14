@@ -85,7 +85,7 @@
                         
                         <div class="navbar-collapse collapse clearfix" id="bs-example-navbar-collapse-1">
                             <ul class="navigation clearfix">
-                                <li [routerLinkActive]="['active']" class="dropdown" *ngFor="let menu of allCategories"><a href="{{baseUrl}}{{menu.category_link}}">{{menu.category_name}}</a>
+                                <li [routerLinkActive]="['current']" class="dropdown" *ngFor="let menu of allCategories"><a href="{{baseUrl}}{{menu.category_link}}">{{menu.category_name}}</a>
                                     <ul>
                                         <li *ngFor="let submenu of menu.sub"><a href="{{baseUrl}}{{menu.category_link}}/{{submenu.category_link}}">{{submenu.category_name}}</a></li>
                                     </ul>
@@ -95,40 +95,6 @@
                     </nav>
                     <!-- Main Menu End-->
                     <div class="outer-box">
-                        
-                        <!--Cart Box-->
-                        <div class="cart-box">
-                            <div class="dropdown">
-                                <button class="cart-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-shopping-cart"></span></button>
-                                <div class="dropdown-menu pull-right cart-panel" aria-labelledby="dropdownMenu3">
-                                    
-                                    <div class="cart-product">
-                                        <div class="inner">
-                                            <div class="cross-icon"><span class="icon fa fa-remove"></span></div>
-                                            <div class="image"><img src="assets/images/resource/post-thumb-3.jpg" alt="" /></div>
-                                            <h3><a href="#">Woolen T-shirt</a></h3>
-                                            <div class="quantity-text">Quantity 1</div>
-                                            <div class="price">$99.00</div>
-                                        </div>
-                                    </div>
-                                    <div class="cart-product">
-                                        <div class="inner">
-                                            <div class="cross-icon"><span class="icon fa fa-remove"></span></div>
-                                            <div class="image"><img src="assets/images/resource/post-thumb-4.jpg" alt="" /></div>
-                                            <h3><a href="#">Woolen T-shirt</a></h3>
-                                            <div class="quantity-text">Quantity 1</div>
-                                            <div class="price">$99.00</div>
-                                        </div>
-                                    </div>
-                                    <div class="cart-total">Sub Total: <span>$198</span></div>
-                                    <ul class="btns-boxed">
-                                        <li><a href="#">View Cart</a></li>
-                                        <li><a href="#">CheckOut</a></li>
-                                    </ul>
-                                    
-                                </div>
-                            </div>
-                        </div>
                         
                         <!--Search Box-->
                         <div class="search-box-outer">
@@ -184,39 +150,11 @@
                         
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li class="current dropdown"><a href="#">Home</a>
+                                <li class="current dropdown" *ngFor="let menu of allCategories"><a href="{{baseUrl}}{{menu.category_link}}">{{menu.category_name}}</a>
                                     <ul>
-                                        <li><a href="index-1.html">Home 01</a></li>
-                                        <li><a href="index-2.html">Home 02</a></li>
-                                        <li><a href="index-3.html">Home 03</a></li>
-                                        <li><a href="index-4.html">Home 04</a></li>
-                                        <li><a href="index-5.html">Home 05</a></li>
-                                        <li><a href="index-6.html">Home 06</a></li>
-                                        <li><a href="index-7.html">Home 07</a></li>
+                                        <li *ngFor="let submenu of menu.sub"><a href="{{baseUrl}}{{menu.category_link}}/{{submenu.category_link}}">{{submenu.category_name}}</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#">Headers</a>
-                                    <ul>
-                                        <li><a href="header-1.html">Header 01</a></li>
-                                        <li><a href="header-2.html">Header 02</a></li>
-                                        <li><a href="header-3.html">Header 03</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="gallery.html">gallery</a></li>
-                                <li class="dropdown"><a href="#">Blog</a>
-                                    <ul>
-                                        <li><a href="blog-single.html">blog Single One</a></li>
-                                        <li><a href="blog-single-2.html">Blog Single Two</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Shop</a>
-                                    <ul>
-                                        <li><a href="shop.html">Our Shop</a></li>
-                                        <li><a href="shop-single.html">Shop Single</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">Contact</a></li>
                             </ul>
                         </div>
                     </nav><!-- Main Menu End-->

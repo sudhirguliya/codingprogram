@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Route, Router, ActivatedRoute } from '@angular/router';
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppGlobals } from '../app.global.service';
 import { RouterService } from '../_services/router.service';
 import { Observable } from 'rxjs/Observable';
@@ -35,6 +35,7 @@ export class LatestPostComponent {
 
     isValid : boolean = false;
     private category_url: any;
+    private post_url : any;
     private category_slug: any;
     private categoryName : any;
 
@@ -42,16 +43,17 @@ export class LatestPostComponent {
         //this.category_url = this.route.params['category'];
         this.route.params.subscribe(params => {
             console.log(params);
-            /*if (params.subcategory) {
+            if (params.subcategory) {
                 this.category_slug = params.subcategory;
                 this.category_url = this._global.baseAppUrl+params.category+'/'+params.subcategory;
             }else{
                 this.category_slug = params.category;
                 this.category_url = this._global.baseAppUrl+params.category;
-            }*/
+            }
             
         });
         
+        if(this.category_slug){
         this.service.getCategory(this.category_slug).subscribe(category => {
           //console.log(category);
           if (category.status == true) {
@@ -93,23 +95,38 @@ export class LatestPostComponent {
                         this.setPage(1);
                     }
                 });
-          }
+          } 
         });
+        
+        }else {
+              this.http.get(this._global.baseAPIUrl +'coding/postdata?limit=56')
+                .map((response: Response) => response.json())
+                .subscribe(data => {
+                    // set items to json response
+                    this.allItems = data.post_data;
+
+                    // initialize to page 1
+                    if(this.allItems){
+                        this.setPage(1);
+                    }
+                });
+          }
 
         //this.clickPost(2, 'microphone-issue-in-macbook');
         
     }
 
     clickPost(category_id:number, post:string){
+        //console.log(this._global.baseAPIUrl +`coding/clickpost?category_id=${category_id}`);
         this.http.get(this._global.baseAPIUrl +`coding/clickpost?category_id=${category_id}`)
             .map((response: Response) => response.json())
             .subscribe(data => {
                 
                 // set items to json response
-                this.category_url = data.post_url+'/post/'+post;
-                console.log(this.category_url);
+                this.post_url = data.post_url+'/post/'+post;
+                //console.log(this.post_url);
                 this.location.replaceState('/'); 
-                this.router.navigate([this.category_url]);
+                this.router.navigate([this.post_url], {replaceUrl:true});
             });
     }
 

@@ -14,13 +14,13 @@
                                 <div class="inner-box">
                                     <div class="image" *ngIf="item.image_path != ''; else templateName">
                                         <a href="{{category_url}}/post/{{item.page_name}}"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="http://www.codingprogrammer.com/admin/upload/{{item.image_path}}" alt="{{item.image_alt}}" /></a>
-                                        <div class="category"><a href="{{category_url}}">{{categoryName}}</a></div>
+                                        <div class="category"><a href="{{post_url}}">{{categoryName}}</a></div>
                                     </div>
                                      
                                     <ng-template #templateName>
                                     <div class="image">
                                         <a href="{{category_url}}/post/{{item.page_name}}"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-5.jpg" alt="" /></a>
-                                        <div class="category"><a href="{{category_url}}">{{categoryName}}</a></div>
+                                        <div class="category"><a href="{{post_url}}">{{categoryName}}</a></div>
                                     </div>
                                     </ng-template>
 
