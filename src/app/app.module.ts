@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {RouterModule} from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { PagerService } from './_services/pager.service';
 // Layouts
 import { HomeLayoutComponent } from './layouts/home-layout.component';
 import { CategoryPostLayoutComponent } from './layouts/category-post-layout.component';
+import { PostDetailsLayoutComponent } from './layouts/post-details-layout.component';
 
 //Component
 import { LatestPostComponent } from './layouts/latest-post.component';
@@ -29,11 +31,11 @@ import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent, HomeLayoutComponent, NotFoundComponent, LatestPostComponent, CategoryPostLayoutComponent,
+    AppComponent, HomeLayoutComponent, NotFoundComponent, LatestPostComponent, CategoryPostLayoutComponent, PostDetailsLayoutComponent,
     TruncatePipe, EscapeHtmlPipe
   ],
   imports: [
-    BrowserModule, HttpModule, FormsModule, 
+    BrowserModule, HttpModule, FormsModule, RouterModule,
     //RouterModule.forRoot(routes) //, { enableTracing: true })
     routing,
   ],

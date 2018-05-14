@@ -4,7 +4,7 @@
                     <div class="latest-news-section">
                         <!--Sec Title-->
                         <div class="sec-title">
-                            <h2>Latest News</h2>
+                            <h2>Latest Post <span *ngIf="categoryName" > of {{categoryName}}</span></h2>
                         </div>
                         <div class="row clearfix">
                             
@@ -13,20 +13,20 @@
                                 
                                 <div class="inner-box">
                                     <div class="image" *ngIf="item.image_path != ''; else templateName">
-                                        <a href="blog-single-2.html"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="http://www.codingprogrammer.com/admin/upload/{{item.image_path}}" alt="{{item.image_alt}}" /></a>
-                                        <div class="category"><a href="blog-single-2.html">Sports</a></div>
+                                        <a href="{{category_url}}/post/{{item.page_name}}"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="http://www.codingprogrammer.com/admin/upload/{{item.image_path}}" alt="{{item.image_alt}}" /></a>
+                                        <div class="category"><a href="{{category_url}}">{{categoryName}}</a></div>
                                     </div>
                                      
                                     <ng-template #templateName>
                                     <div class="image">
-                                        <a href="blog-single-2.html"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-5.jpg" alt="" /></a>
-                                        <div class="category"><a href="blog-single-2.html">No Sports</a></div>
+                                        <a href="{{category_url}}/post/{{item.page_name}}"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-5.jpg" alt="" /></a>
+                                        <div class="category"><a href="{{category_url}}">{{categoryName}}</a></div>
                                     </div>
                                     </ng-template>
 
-                                    
+                                    <!-- href="{{category_url}}/post/{{item.page_name}}" -->
                                     <div class="lower-box">
-                                        <h3><a href="blog-single-2.html">{{item.page_title | truncate : 64 : true }}</a></h3>
+                                        <h3><a (click)="clickPost( item.category_id, item.page_name)">{{item.page_title | truncate : 64 : true }}</a></h3>
                                         <!-- <ul class="post-meta">
                                             <li><span class="icon fa fa-clock-o"></span>March 01, 2016</li>
                                             <li><span class="icon fa fa-comment-o"></span>7</li>

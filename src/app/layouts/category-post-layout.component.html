@@ -54,7 +54,7 @@
                 <div class="clearfix">
                     
                     <div class="pull-left logo-outer">
-                        <div class="logo"><a href="index-1.html"></a></div>
+                        <div class="logo"><a href="{{baseUrl}}"></a></div>
                     </div>
                     
                     <div class="pull-right upper-right clearfix">
@@ -85,12 +85,20 @@
                         
                         <div class="navbar-collapse collapse clearfix" id="bs-example-navbar-collapse-1">
                             <ul class="navigation clearfix">
-                                <li class="dropdown" *ngFor="let menu of allCategories"><a href="{{baseUrl}}{{menu.category_link}}">{{menu.category_name}}</a>
+                                <li routerLinkActive='current' class="dropdown" *ngFor="let menu of allCategories"><a href="{{baseUrl}}{{menu.category_link}}">{{menu.category_name}}</a>
                                     <ul ng>
                                         <li *ngFor="let submenu of menu.sub"><a href="{{baseUrl}}{{menu.category_link}}/{{submenu.category_link}}">{{submenu.category_name}}</a></li>
                                     </ul>
                                 </li>
                             </ul>
+
+                            <!-- <ul class="navigation clearfix">
+                                <li class="dropdown" *ngFor="let menu of allCategories"><a routerLinkActive='current' [routerLink]="'/' + menu.category_link" >{{menu.category_name}}</a>
+                                    <ul>
+                                        <li *ngFor="let submenu of menu.sub"><a [routerLink]="'/' + menu.category_link +'/' + submenu.category_link"  >{{submenu.category_name}}</a></li>
+                                    </ul>
+                                </li>
+                            </ul> -->
                         </div>
                     </nav>
                     <!-- Main Menu End-->

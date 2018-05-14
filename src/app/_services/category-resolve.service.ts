@@ -16,7 +16,8 @@ export class CategoryResolve{
     return this.service.getCategory(category).subscribe(category => {
       //console.log(category);
       if (category.status == true) {
-        //console.log('hi');
+        //console.log('hi category');
+        //this.location.replaceState('/'); // clears browser history so they can't navigate with back button
         return category.category_detail.category_link;
       } else {
         //console.log('bye');

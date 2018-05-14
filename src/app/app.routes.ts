@@ -16,6 +16,7 @@ import { PostResolve } from './_services/post-resolve.service';
 // Layouts
 import { HomeLayoutComponent } from './layouts/home-layout.component';
 import { CategoryPostLayoutComponent } from './layouts/category-post-layout.component';
+import { PostDetailsLayoutComponent } from './layouts/post-details-layout.component';
 
 
 // Define which component should be loaded based on the current URL
@@ -35,15 +36,21 @@ const appRoutes: Routes = [
         }
   },
   {
-    path: ':category/:post',
+    path: ":category/post/:post", component: PostDetailsLayoutComponent,
+      resolve: {
+        post: PostResolve
+      }
+  },
+  {
+    path: ':category/:subcategory',
     component: CategoryPostLayoutComponent,
     resolve: {
-          post: PostResolve
+          subcategory: SubCategoryResolve
         }
   },
   {
-    path: ':category/:subcategory/:post',
-    component: CategoryPostLayoutComponent,
+    path: ':category/:subcategory/post/:post',
+    component: PostDetailsLayoutComponent,
     resolve: {
           post: PostResolve
         }

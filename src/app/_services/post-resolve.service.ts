@@ -14,22 +14,12 @@ export class PostResolve{
     let post = route.params['post'];
     let category_link = route.params['category'];
     let subcategory = route.params['subcategory'];
-    //console.log(subcategory);
-    return this.service.getCategory(post).subscribe(category => {
-      //console.log(category);
-      if (category.status == true) {
-        //console.log('hi');
-        return category.category_detail.category_link;
-      } else {
-        //console.log('bye');
-        // navigate the user back to the about page
-        //this.router.navigate(['/'+category]);
-        //return false;
-        return this.service.getPost(category_link, post ).subscribe(post => {
+    console.log(post);
+    return this.service.getPost(category_link, post ).subscribe(post => {
           //console.log(post);
           //console.log(category_link);
           if (post.status == true) {
-            //console.log('hi post');
+            console.log('hi post');
             return post.post_detail.page_name;
           } else {
             //console.log('bye post');
@@ -45,8 +35,6 @@ export class PostResolve{
             return false;
           }
         });
-      }
-    });
     
   }
 }
