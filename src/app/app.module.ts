@@ -28,11 +28,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
 //Pipe
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
+import { RemoveHtmlPipe } from './pipes/remove-html.pipe';
 
 @NgModule({
   declarations: [
     AppComponent, HomeLayoutComponent, NotFoundComponent, LatestPostComponent, CategoryPostLayoutComponent, PostDetailsLayoutComponent,
-    TruncatePipe, EscapeHtmlPipe
+    TruncatePipe, EscapeHtmlPipe, RemoveHtmlPipe
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, RouterModule,

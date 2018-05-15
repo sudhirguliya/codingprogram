@@ -1,8 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
-@Pipe({ name: 'keepHtml', pure: false })
-export class EscapeHtmlPipe implements PipeTransform {
+@Pipe({ name: 'removeHtml', pure: false })
+export class RemoveHtmlPipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {
   }
 
@@ -37,16 +37,13 @@ export class EscapeHtmlPipe implements PipeTransform {
     var str = this.decodeHtml(content);
     //var regex = /(<([^>]+)>)/ig;
   	//return str.replace(regex, "");
-    str = str.toString()
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    //var StrippedString = str.replace(/(<([^>]+)>)/ig,"");
+    var StrippedString = str.replace(/(<([^>]+)>)/ig,"");
   	// str=str.replace(/<\s*br\/*>/gi, "\n");
   	// str=str.replace(/<\s*a.*href="(.*?)".*>(.*?)<\/a>/gi, " $2 (Link->$1) ");
   	// str=str.replace(/<\s*\/*.+?>/ig, "\n");
   	// str=str.replace(/ {2,}/gi, " "); 
   	// str=str.replace(/\n+\s*/gi, "\n\n");
       //return content ? String(content).replace(/<[^>]+>/gm, '') : '';
-    return str;
+    return StrippedString;
   }
 }

@@ -34,7 +34,7 @@
                                         </ul> -->
                                         <!-- [innerText]="item.page_description " -->
                                         <!-- [innerHTML]="item.page_description | keepHtml" --> 
-                                        <div class="text" >{{item.page_description | keepHtml | truncate : 200 : true}}
+                                        <div class="text" >{{item.page_description | removeHtml | truncate : 200 : true}}
                                         </div>
                                     </div>
                                 </div>
