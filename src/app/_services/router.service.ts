@@ -39,24 +39,24 @@ getPost(category: Category, post : string) {
         return this.http.post(this._global.baseAPIUrl +'coding/posturl',   body, options).map((res) => res.json());
     }
 
-/*postDetails( post : string) {
-    var obj = { post : post };
+postDetails( post : string) {
+    /*var obj = { post : post };
 
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
         let options = new RequestOptions( {method: RequestMethod.Post, headers: headers });
 
-        let body = this.serializeObj(obj);
+        let body = this.serializeObj(obj);*/
 
-        return this.http.post(this._global.baseAPIUrl +'coding/postdetails',   body, options).map((res) => res.json());
-    }*/
+        return this.http.get(this._global.baseAPIUrl +'coding/postdetails?post='+post).map((res) => res.json());
+    }
 
-postDetails(post: string): Promise<any> {
+/*postDetails(post: string): Promise<any> {
     return this.http.get(this._global.baseAPIUrl +'coding/postdetails?post=' + post)
         .toPromise()
         .then(response => response.json())
         .then(postinfo => new PostDetails(postinfo.post_detail))
         .catch(error => console.log(error));
-}
+}*/
 
     // private helper methods
 

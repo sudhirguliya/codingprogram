@@ -20,18 +20,10 @@
       "prefix": "app",
       "styles": [
         "styles.css"
+        
       ],
       "scripts": [
-        "assets/js/jquery.js",
-        "assets/js/bootstrap.min.js",
-        "assets/js/jquery.fancybox.pack.js",
-        "assets/js/jquery.fancybox-media.js",
-        "assets/js/owl.js",
-        "assets/js/appear.js",
-        "assets/js/wow.js",
-        "assets/js/jquery.mCustomScrollbar.concat.min.js",
-        "assets/js/color-settings.js",
-        "assets/js/script.js"
+        
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

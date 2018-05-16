@@ -30,11 +30,11 @@ export class PostDetailsLayoutComponent implements OnInit {
 	    switchMap(
 	      (params: Params) => 
 	       this.service.postDetails(params['post'])))
-	    .subscribe((postdetails :PostDetails) => {
-	    	this.postdetails = postdetails,
-	    	this.postdesc =  postdetails;
-	    	//console.log(this.postdesc) });
-		});
+	    .subscribe((postdetails) => {
+	    	
+	    	this.postdesc = postdetails.post_detail;
+	    	//console.log(this.postdesc) 
+	    });
 	}
 
 	showMenu() {

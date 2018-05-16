@@ -6,7 +6,7 @@ export class EscapeHtmlPipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {
   }
 
-  escapeHtml(text) {
+  /*escapeHtml(text) {
     var map = {
       '<': '&lt;',
       '>': '&gt;',
@@ -16,7 +16,7 @@ export class EscapeHtmlPipe implements PipeTransform {
     };
 
     return text.replace(/[<>"']/g, function(m) { return map[m]; });
-  }
+  }*/
 
   decodeHtml(str)
   {
@@ -28,7 +28,7 @@ export class EscapeHtmlPipe implements PipeTransform {
           '&quot;': '"',
           '&#039;': "'"
       };
-      return str.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, function(m) {return map[m];});
+      return String(str).replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, function(m) {return map[m];});
   }
 
   transform(content) {
@@ -38,8 +38,8 @@ export class EscapeHtmlPipe implements PipeTransform {
     //var regex = /(<([^>]+)>)/ig;
   	//return str.replace(regex, "");
     str = str.toString()
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
+    String(str).replace(/&lt;/g, '<')
+    String(str).replace(/&gt;/g, '>')
     //var StrippedString = str.replace(/(<([^>]+)>)/ig,"");
   	// str=str.replace(/<\s*br\/*>/gi, "\n");
   	// str=str.replace(/<\s*a.*href="(.*?)".*>(.*?)<\/a>/gi, " $2 (Link->$1) ");

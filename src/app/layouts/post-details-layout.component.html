@@ -53,7 +53,7 @@
                 <div class="clearfix">
                     
                     <div class="pull-left logo-outer">
-                        <div class="logo"><a href="index-1.html"></a></div>
+                        <div class="logo"><a href="{{baseUrl}}"></a></div>
                     </div>
                     
                     <div class="pull-right upper-right clearfix">
@@ -231,18 +231,6 @@
                     </form>
                 </div>
                 
-                <!--Mobile Cart-->
-                <div class="mobile-cart">
-                    <a href="shop-single.html" class="clearfix">
-                        <div class="pull-left">
-                            <div class="text">0 items 0.00$</div>
-                        </div>
-                        <div class="pull-right">
-                            <span class="icon fa fa-shopping-cart"></span>
-                        </div>
-                    </a>
-                </div>
-                
                 <!--Language Dropdown-->
                 <div class="language dropdown"><a class="btn btn-default dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#"> English <span class="icon fa fa-angle-down"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -276,7 +264,7 @@
                 <div class="slide">
                     <div class="video-box">
                         <figure class="image">
-                            <img src="images/resource/video-img.jpg" alt="">
+                            <img src="assets/images/resource/video-img.jpg" alt="">
                         </figure>
                         <a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image overlay-box"><span class="fa fa-play"></span></a>
                     </div>
@@ -285,7 +273,7 @@
                 <div class="slide">
                     <div class="video-box">
                         <figure class="image">
-                            <img src="images/resource/video-img.jpg" alt="">
+                            <img src="assets/images/resource/video-img.jpg" alt="">
                         </figure>
                         <a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image overlay-box"><span class="fa fa-play"></span></a>
                     </div>
@@ -294,7 +282,7 @@
                 <div class="slide">
                     <div class="video-box">
                         <figure class="image">
-                            <img src="images/resource/video-img.jpg" alt="">
+                            <img src="assets/images/resource/video-img.jpg" alt="">
                         </figure>
                         <a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image overlay-box"><span class="fa fa-play"></span></a>
                     </div>
@@ -325,7 +313,7 @@
                                         <li>Featured</li>
                                         <li>Travel</li>
                                     </ul>
-                                    <!-- <h2 *ngIf="postdesc.page_title">{{postdesc.page_title}}</h2> -->
+                                    <h2>{{ postdesc?.page_title }} </h2>
                                     <ul class="post-meta">
                                         <li><span class="icon qb-clock"></span>March 16, 2016</li>
                                         <li><span class="icon qb-user2"></span>by Ninzio</li>
@@ -342,7 +330,7 @@
                                     </ul>
                                 </div>
                                 <div class="text">
-                                    <p [innerHTML]="postdesc.page_description | keepHtml"></p>
+                                    <p [innerHTML]="postdesc?.page_description | keepHtml"></p>
                                 </div>
                                 <!--post-share-options-->
                                 <div class="post-share-options">
@@ -360,7 +348,7 @@
                             <div class="author-box">
                                 <div class="author-comment">
                                     <div class="inner-box">
-                                        <div class="image"><img src="images/resource/author-1.jpg" alt="" /></div>
+                                        <div class="image"><img src="assets/images/resource/author-1.jpg" alt="" /></div>
                                         <h4>Sandra Mavic</h4>
                                         <div class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit doli. Aenean commodo ligula eget dolor. Aenean massa. Cumtipsu sociis natoque penatibus et magnis dis parturient montesti, nascetur ridiculus mus. Donec quam penatibus et magnis .</div>
                                         <ul class="social-icon-two">
@@ -385,7 +373,7 @@
                                     <div class="news-block-two small-block">
                                         <div class="inner-box">
                                             <div class="image">
-                                                <a href="#"><img src="images/resource/news-40.jpg" alt="" /></a>
+                                                <a href="#"><img src="assets/images/resource/news-40.jpg" alt="" /></a>
                                                 <div class="category"><a href="#">Travel</a></div>
                                             </div>
                                             <div class="lower-box">
@@ -401,7 +389,7 @@
                                     <div class="news-block-two small-block">
                                         <div class="inner-box">
                                             <div class="image">
-                                                <a href="#"><img src="images/resource/news-41.jpg" alt="" /></a>
+                                                <a href="#"><img src="assets/images/resource/news-41.jpg" alt="" /></a>
                                                 <div class="category"><a href="#">Sports</a></div>
                                             </div>
                                             <div class="lower-box">
@@ -417,7 +405,7 @@
                                     <div class="news-block-two small-block">
                                         <div class="inner-box">
                                             <div class="image">
-                                                <a href="#"><img src="images/resource/news-42.jpg" alt="" /></a>
+                                                <a href="#"><img src="assets/images/resource/news-42.jpg" alt="" /></a>
                                                 <div class="category">photo</div>
                                             </div>
                                             <div class="lower-box">
@@ -433,7 +421,7 @@
                                     <div class="news-block-two small-block">
                                         <div class="inner-box">
                                             <div class="image">
-                                                <a href="#"><img src="images/resource/news-40.jpg" alt="" /></a>
+                                                <a href="#"><img src="assets/images/resource/news-40.jpg" alt="" /></a>
                                                 <div class="category"><a href="#">Travel</a></div>
                                             </div>
                                             <div class="lower-box">
@@ -449,7 +437,7 @@
                                     <div class="news-block-two small-block">
                                         <div class="inner-box">
                                             <div class="image">
-                                                <a href="#"><img src="images/resource/news-41.jpg" alt="" /></a>
+                                                <a href="#"><img src="assets/images/resource/news-41.jpg" alt="" /></a>
                                                 <div class="category"><a href="#">Sports</a></div>
                                             </div>
                                             <div class="lower-box">
@@ -465,7 +453,7 @@
                                     <div class="news-block-two small-block">
                                         <div class="inner-box">
                                             <div class="image">
-                                                <a href="#"><img src="images/resource/news-42.jpg" alt="" /></a>
+                                                <a href="#"><img src="assets/images/resource/news-42.jpg" alt="" /></a>
                                                 <div class="category">photo</div>
                                             </div>
                                             <div class="lower-box">
@@ -486,7 +474,7 @@
                                 <!--Comment Box-->
                                 <div class="comment-box">
                                     <div class="comment">
-                                        <div class="author-thumb"><img src="images/resource/author-2.jpg" alt=""></div>
+                                        <div class="author-thumb"><img src="assets/images/resource/author-2.jpg" alt=""></div>
                                         <div class="comment-inner">
                                             <div class="comment-info">Sandra Mavic</div>
                                             <div class="post-date">March 03, 2016</div>
@@ -498,7 +486,7 @@
                                 <!--Comment Box-->
                                 <div class="comment-box reply-comment">
                                     <div class="comment">
-                                        <div class="author-thumb"><img src="images/resource/author-2.jpg" alt=""></div>
+                                        <div class="author-thumb"><img src="assets/images/resource/author-2.jpg" alt=""></div>
                                         <div class="comment-inner">
                                             <div class="comment-info">Sandra Mavic</div>
                                             <div class="post-date">March 03, 2016</div>
@@ -570,7 +558,7 @@
                             <div class="news-block-five">
                                 <div class="inner-box">
                                     <div class="image">
-                                        <a href="#"><img src="images/resource/news-14.jpg" alt="" /></a>
+                                        <a href="#"><img src="assets/images/resource/news-14.jpg" alt="" /></a>
                                         <div class="category"><a href="#">Travel</a></div>
                                     </div>
                                     <div class="lower-box">
@@ -591,7 +579,7 @@
                             <!--Widget Post Two-->
                             <article class="widget-post-two">
                                 <div class="inner">
-                                    <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-5.jpg" alt=""></a></figure>
+                                    <figure class="post-thumb"><a href="blog-single.html"><img src="assets/images/resource/post-thumb-5.jpg" alt=""></a></figure>
                                     <div class="text"><a href="blog-single.html">A young woman holding a beautiful umbrella in the rain</a></div>
                                     <div class="rating">
                                         <span class="fa fa-star"></span>
@@ -607,7 +595,7 @@
                             <!--Widget Post Two-->
                             <article class="widget-post-two">
                                 <div class="inner">
-                                    <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg" alt=""></a></figure>
+                                    <figure class="post-thumb"><a href="blog-single.html"><img src="assets/images/resource/post-thumb-2.jpg" alt=""></a></figure>
                                     <div class="text"><a href="blog-single.html">Fix an Exchange Rate now with a Forward Contract</a></div>
                                     <div class="rating">
                                         <span class="fa fa-star"></span>
@@ -623,7 +611,7 @@
                             <!--Widget Post Two-->
                             <article class="widget-post-two">
                                 <div class="inner">
-                                    <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a></figure>
+                                    <figure class="post-thumb"><a href="blog-single.html"><img src="assets/images/resource/post-thumb-3.jpg" alt=""></a></figure>
                                     <div class="text"><a href="blog-single.html">Study the New Digital Course Developed with Google</a></div>
                                     <div class="rating">
                                         <span class="fa fa-star"></span>
@@ -658,7 +646,7 @@
                         
                         <!--Adds Widget-->
                         <div class="sidebar-widget sidebar-adds-widget">
-                            <div class="adds-block" style="background-image:url(images/resource/add-image.jpg);">
+                            <div class="adds-block" style="background-image:url(assets/images/resource/add-image.jpg);">
                                 <div class="inner-box">
                                     <div class="text">Advertisement <span> 340 x 283</span></div>
                                     <a href="#" class="theme-btn btn-style-two">Purchase Now</a>
@@ -690,25 +678,25 @@
                                             <div class="content">
                                                 
                                                 <article class="widget-post">
-                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-1.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
+                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="assets/images/resource/post-thumb-1.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
                                                     <div class="text"><a href="blog-single.html">Priyanka Chopra got her what photoshopped?</a></div>
                                                     <div class="post-info">April 01, 2016</div>
                                                 </article>
                                                 
                                                 <article class="widget-post">
-                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
+                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="assets/images/resource/post-thumb-2.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
                                                     <div class="text"><a href="blog-single.html">Jerry Seinfeld grabs coffee with Margaret Cho and it gets</a></div>
                                                     <div class="post-info">April 02, 2016</div>
                                                 </article>
                                                 
                                                 <article class="widget-post">
-                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
+                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="assets/images/resource/post-thumb-3.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
                                                     <div class="text"><a href="blog-single.html">American Black Film Festival New projects from film TV</a></div>
                                                     <div class="post-info">April 03, 2016</div>
                                                 </article>
                                                 
                                                 <article class="widget-post">
-                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-4.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
+                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="assets/images/resource/post-thumb-4.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
                                                     <div class="text"><a href="blog-single.html">Amy Schumer swaps lives with Anna Wintour</a></div>
                                                     <div class="post-info">April 04, 2016</div>
                                                 </article>
@@ -721,13 +709,13 @@
                                             <div class="content">
                                                 
                                                 <article class="widget-post">
-                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
+                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="assets/images/resource/post-thumb-2.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
                                                     <div class="text"><a href="blog-single.html">Jerry Seinfeld grabs coffee with Margaret Cho and it gets</a></div>
                                                     <div class="post-info">April 02, 2016</div>
                                                 </article>
                                                 
                                                 <article class="widget-post">
-                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
+                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="assets/images/resource/post-thumb-3.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
                                                     <div class="text"><a href="blog-single.html">American Black Film Festival New projects from film TV</a></div>
                                                     <div class="post-info">April 03, 2016</div>
                                                 </article>
@@ -740,19 +728,19 @@
                                             <div class="content">
                                                 
                                                 <article class="widget-post">
-                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
+                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="assets/images/resource/post-thumb-3.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
                                                     <div class="text"><a href="blog-single.html">American Black Film Festival New projects from film TV</a></div>
                                                     <div class="post-info">April 03, 2016</div>
                                                 </article>
                                                 
                                                 <article class="widget-post">
-                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-4.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
+                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="assets/images/resource/post-thumb-4.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
                                                     <div class="text"><a href="blog-single.html">Amy Schumer swaps lives with Anna Wintour</a></div>
                                                     <div class="post-info">April 04, 2016</div>
                                                 </article>
                                                 
                                                 <article class="widget-post">
-                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-1.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
+                                                    <figure class="post-thumb"><a href="blog-single.html"><img src="assets/images/resource/post-thumb-1.jpg" alt=""></a><div class="overlay"><span class="icon qb-play-arrow"></span></div></figure>
                                                     <div class="text"><a href="blog-single.html">Priyanka Chopra got her what photoshopped?</a></div>
                                                     <div class="post-info">April 01, 2016</div>
                                                 </article>
@@ -809,7 +797,7 @@
                             <!--Review Block-->
                             <div class="review-block">
                                 <div class="inner-box">
-                                    <div class="image"><a href="#"><img src="images/resource/review-1.jpg" alt="" /></a></div>
+                                    <div class="image"><a href="#"><img src="assets/images/resource/review-1.jpg" alt="" /></a></div>
                                     <div class="text"><a href="#">A young woman holding a beautiful umbrella in the rain</a></div>
                                     <span class="ratings">
                                         <span class="fa fa-star"></span>
@@ -825,7 +813,7 @@
                             <!--Review Block-->
                             <div class="review-block">
                                 <div class="inner-box">
-                                    <div class="image"><a href="#"><img src="images/resource/review-2.jpg" alt="" /></a></div>
+                                    <div class="image"><a href="#"><img src="assets/images/resource/review-2.jpg" alt="" /></a></div>
                                     <div class="text"><a href="#">Study the New Digital Course Developed with Google</a></div>
                                     <span class="ratings">
                                         <span class="fa fa-star"></span>
@@ -841,7 +829,7 @@
                             <!--Review Block-->
                             <div class="review-block">
                                 <div class="inner-box">
-                                    <div class="image"><a href="#"><img src="images/resource/review-3.jpg" alt="" /></a></div>
+                                    <div class="image"><a href="#"><img src="assets/images/resource/review-3.jpg" alt="" /></a></div>
                                     <div class="text"><a href="#">A modern day security strategy for your computer</a></div>
                                     <span class="ratings">
                                         <span class="fa fa-star"></span>
@@ -862,14 +850,14 @@
                         <div class="footer-widget isntagram-widget">
                             <h2>Instagram Photos</h2>
                             <div class="clearfix">
-                                <figure class="image"><a href="images/resource/news-1.jpg" class="lightbox-image"><img src="images/resource/instagram-1.jpg" alt=""></a></figure>
-                                <figure class="image"><a href="images/resource/news-2.jpg" class="lightbox-image"><img src="images/resource/instagram-2.jpg" alt=""></a></figure>
-                                <figure class="image"><a href="images/resource/news-3.jpg" class="lightbox-image"><img src="images/resource/instagram-3.jpg" alt=""></a></figure>
-                                <figure class="image"><a href="images/resource/news-4.jpg" class="lightbox-image"><img src="images/resource/instagram-4.jpg" alt=""></a></figure>
-                                <figure class="image"><a href="images/resource/news-1.jpg" class="lightbox-image"><img src="images/resource/instagram-5.jpg" alt=""></a></figure>
-                                <figure class="image"><a href="images/resource/news-2.jpg" class="lightbox-image"><img src="images/resource/instagram-6.jpg" alt=""></a></figure>
-                                <figure class="image"><a href="images/resource/news-3.jpg" class="lightbox-image"><img src="images/resource/instagram-7.jpg" alt=""></a></figure>
-                                <figure class="image"><a href="images/resource/news-4.jpg" class="lightbox-image"><img src="images/resource/instagram-8.jpg" alt=""></a></figure>
+                                <figure class="image"><a href="assets/images/resource/news-1.jpg" class="lightbox-image"><img src="assets/images/resource/instagram-1.jpg" alt=""></a></figure>
+                                <figure class="image"><a href="assets/images/resource/news-2.jpg" class="lightbox-image"><img src="assets/images/resource/instagram-2.jpg" alt=""></a></figure>
+                                <figure class="image"><a href="assets/images/resource/news-3.jpg" class="lightbox-image"><img src="assets/images/resource/instagram-3.jpg" alt=""></a></figure>
+                                <figure class="image"><a href="assets/images/resource/news-4.jpg" class="lightbox-image"><img src="assets/images/resource/instagram-4.jpg" alt=""></a></figure>
+                                <figure class="image"><a href="assets/images/resource/news-1.jpg" class="lightbox-image"><img src="assets/images/resource/instagram-5.jpg" alt=""></a></figure>
+                                <figure class="image"><a href="assets/images/resource/news-2.jpg" class="lightbox-image"><img src="assets/images/resource/instagram-6.jpg" alt=""></a></figure>
+                                <figure class="image"><a href="assets/images/resource/news-3.jpg" class="lightbox-image"><img src="assets/images/resource/instagram-7.jpg" alt=""></a></figure>
+                                <figure class="image"><a href="assets/images/resource/news-4.jpg" class="lightbox-image"><img src="assets/images/resource/instagram-8.jpg" alt=""></a></figure>
                             </div>
                         </div>
                         
@@ -897,7 +885,7 @@
                             <div class="news-info">
                                 <div class="inner-box">
                                     <div class="image">
-                                        <img src="images/resource/news-post-1.jpg" alt="" />
+                                        <img src="assets/images/resource/news-post-1.jpg" alt="" />
                                         <a class="overlay" href="#"><span class="icon fa fa-play"></span></a>
                                     </div>
                                     <div class="text"><a href="#">Study the New Digital Course Developed with Google</a></div>
@@ -909,7 +897,7 @@
                             <div class="news-info">
                                 <div class="inner-box">
                                     <div class="image">
-                                        <img src="images/resource/news-post-2.jpg" alt="" />
+                                        <img src="assets/images/resource/news-post-2.jpg" alt="" />
                                         <a class="overlay" href="#"><span class="icon fa fa-play"></span></a>
                                     </div>
                                     <div class="text"><a href="#">A young woman holding a beautiful umbrella in the rain</a></div>
@@ -921,7 +909,7 @@
                             <div class="news-info">
                                 <div class="inner-box">
                                     <div class="image">
-                                        <img src="images/resource/news-post-3.jpg" alt="" />
+                                        <img src="assets/images/resource/news-post-3.jpg" alt="" />
                                         <a class="overlay" href="#"><span class="icon fa fa-play"></span></a>
                                     </div>
                                     <div class="text"><a href="#">Gain Essential Creative Project Management Training</a></div>
