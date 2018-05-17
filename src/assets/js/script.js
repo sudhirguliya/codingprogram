@@ -75,7 +75,8 @@
 	
 	
 	//Hidden Sidebar
-	if ($('.hidden-bar').length) {
+	if ($('.hidden-bar').length >=0) {
+		//alert($('.hidden-bar').length);
 		var hiddenBar = $('.hidden-bar');
 		var hiddenBarOpener = $('.hidden-bar-opener');
 		var hiddenBarCloser = $('.hidden-bar-closer');
@@ -83,6 +84,7 @@
 		
 		//Show Sidebar
 		hiddenBarOpener.on('click', function () {
+			alert(hiddenBarOpener);
 			hiddenBar.addClass('visible-sidebar');
 		});
 		

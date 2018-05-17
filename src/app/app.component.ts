@@ -1,5 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-
+import { Component, ViewEncapsulation, AfterViewInit } from '@angular/core';
+declare var $:any;
 
 @Component({
   moduleId: module.id,
@@ -11,5 +11,12 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
   title = 'Goconsult!';
+  
+  selectedIndex = -1;
+
+  setSelected(id: number) {
+    this.selectedIndex = id;
+  }
+
   
 }

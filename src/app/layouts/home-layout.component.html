@@ -118,8 +118,9 @@
                     </div>
                     
                     <!-- Hidden Nav Toggler -->
+                    <!-- (click)="setSelected(1)" -->
                      <div class="nav-toggler">
-                         <button class="hidden-bar-opener"><span class="icon qb-menu1"></span></button>
+                         <button class="hidden-bar-opener" ><span class="icon qb-menu1"></span></button>
                      </div>
                     
                 </div>
@@ -168,10 +169,11 @@
     <!--End Header Style Two -->
     
     <!-- Hidden Navigation Bar -->
+     <!-- [ngClass]="{'visible-sidebar': selectedIndex == 1}"  (click)="setSelected(-1)"-->
     <section class="hidden-bar left-align">
         
         <div class="hidden-bar-closer">
-            <button><span class="qb-close-button"></span></button>
+            <button ><span class="qb-close-button"></span></button>
         </div>
         
         <!-- Hidden Bar Wrapper -->
