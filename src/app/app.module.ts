@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
+import * as $ from 'jquery';
+
 //Routing
 import { routing } from './app.routes';
 //import { Route, Routes , Router, RouterModule } from '@angular/router';

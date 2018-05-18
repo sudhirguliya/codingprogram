@@ -11,6 +11,13 @@ declare var $:any;
 })
 export class AppComponent {
   title = 'Goconsult!';
+
+  ngOnInit(): void {
+  	alert($('.app-loading').length);
+    //if($('.app-loading').length){
+      $('.app-loading').delay(200).fadeOut(500);
+    //}
+  }
   
   selectedIndex = -1;
 

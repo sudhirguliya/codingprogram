@@ -19,11 +19,20 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
-        
+        "styles.css",
+        "styles-app-loading.css"
       ],
       "scripts": [
-        
+        "../node_modules/jquery/dist/jquery.min.js",
+        "assets/js/jquery.js",
+        "assets/js/bootstrap.min.js",
+        "assets/js/jquery.fancybox.pack.js",
+        "assets/js/jquery.fancybox-media.js",
+        "assets/js/owl.js",
+        "assets/js/appear.js",
+        "assets/js/wow.js",
+        "assets/js/jquery.mCustomScrollbar.concat.min.js",
+        "assets/js/color-settings.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

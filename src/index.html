@@ -15,13 +15,73 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <style type="text/css">
+      body, html {
+        height: 100%;
+      }
+      .app-loading {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      .app-loading .spinner {
+        height: 200px;
+        width: 200px;
+        animation: rotate 2s linear infinite;
+        transform-origin: center center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+      .app-loading .spinner .path {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+        animation: dash 1.5s ease-in-out infinite;
+        stroke-linecap: round;
+        stroke: #ddd;
+      }
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes dash {
+        0% {
+          stroke-dasharray: 1, 200;
+          stroke-dashoffset: 0;
+        }
+        50% {
+          stroke-dasharray: 89, 200;
+          stroke-dashoffset: -35px;
+        }
+        100% {
+          stroke-dasharray: 89, 200;
+          stroke-dashoffset: -124px;
+        }
+      }
+    </style>
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+    <!-- loading layout replaced by app after startupp -->
+      <div class="app-loading">
+        <div class="logo"></div>
+        <svg class="spinner" viewBox="25 25 50 50">
+          <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+        </svg>
+      </div>
+  </app-root>
 
   <!--End Scroll to top-->
 
-<script src="assets/js/jquery.js"></script>
+<!-- <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script> 
 <script src="assets/js/jquery.fancybox.pack.js"></script>
 <script src="assets/js/jquery.fancybox-media.js"></script>
@@ -30,17 +90,17 @@
 <script src="assets/js/wow.js"></script>
 <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>  
 <script src="assets/js/color-settings.js"></script>
-<script src="assets/js/script.js"></script>
+<script src="assets/js/script.js"></script> -->
 
-<!-- // ".././node_modules/jquery/dist/jquery.js",
-        // ".././node_modules/bootstrap/dist/js/bootstrap.js",
-        // ".././node_modules/fancybox/dist/js/jquery.fancybox.pack.js",
-        // ".././node_modules/fancybox/dist/helpers/js/jquery.fancybox-media.js",
-        // "../src/assets/js/owl.js",
-        // "../src/assets/js/appear.js",
-        // "../src/assets/js/wow.js",
-        // "../src/assets/js/jquery.mCustomScrollbar.concat.min.js",
-        // "../src/assets/js/color-settings.js",
+<!-- "assets/js/jquery.js",
+        "assets/js/bootstrap.js",
+        "assets/js/jquery.fancybox.pack.js",
+        "assets/js/jquery.fancybox-media.js",
+        "assets/js/owl.js",
+        "assets/js/appear.js",
+        "assets/js/wow.js",
+        "assets/js/jquery.mCustomScrollbar.concat.min.js",
+        "assets/js/color-settings.js",
         // "../src/assets/js/script.js" -->
 </body>
 </html>

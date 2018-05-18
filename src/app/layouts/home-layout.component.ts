@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterService } from '../_services/router.service'
 import { AppGlobals } from '../app.global.service';
- 
+declare var $:any;
+
 @Component({
   selector: 'app-dashboard',
   //template: '<router-outlet></router-outlet>',
@@ -40,6 +41,7 @@ export class HomeLayoutComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+
     //Hide Loading Box (Preloader)
   function handlePreloader() {
     if($('.preloader').length){
@@ -673,7 +675,7 @@ export class HomeLayoutComponent implements OnInit {
   
   
   // Elements Animation
-  if($('.wow').length){
+  /*if($('.wow').length){
     var wow = new WOW(
       {
       boxClass:     'wow',      // animated element css class (default is wow)
@@ -684,7 +686,7 @@ export class HomeLayoutComponent implements OnInit {
       }
     );
     wow.init();
-  }
+  }*/
 
 /* ==========================================================================
    When document is Scrollig, do
@@ -698,9 +700,10 @@ export class HomeLayoutComponent implements OnInit {
    When document is loaded, do
    ========================================================================== */
   
-  $(window).on('load', function() {
+  /*$(window).on('onhashchange', function() {
     handlePreloader();
-  });  
-  }
+  });*/
 
+  
+  }
 }

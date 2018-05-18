@@ -6,6 +6,8 @@ import { PostDetails } from '../shared/models/postdetails';
 import { Observable } from 'rxjs/Observable';
 //import 'rxjs/add/observable/switchMap';
 import { switchMap } from 'rxjs/operators';
+
+declare var $:any;
  
 @Component({
   selector: 'app-dashboard',
@@ -55,7 +57,8 @@ export class PostDetailsLayoutComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit() {
+    ngAfterViewInit() {
+
     //Hide Loading Box (Preloader)
   function handlePreloader() {
     if($('.preloader').length){
@@ -689,7 +692,7 @@ export class PostDetailsLayoutComponent implements OnInit {
   
   
   // Elements Animation
-  if($('.wow').length){
+  /*if($('.wow').length){
     var wow = new WOW(
       {
       boxClass:     'wow',      // animated element css class (default is wow)
@@ -700,7 +703,7 @@ export class PostDetailsLayoutComponent implements OnInit {
       }
     );
     wow.init();
-  }
+  }*/
 
 /* ==========================================================================
    When document is Scrollig, do
@@ -716,6 +719,7 @@ export class PostDetailsLayoutComponent implements OnInit {
   
   /*$(window).on('load', function() {
     handlePreloader();
-  }); */ 
+  });*/
+  
   }
 }
