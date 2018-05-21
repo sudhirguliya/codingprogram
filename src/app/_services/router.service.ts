@@ -39,7 +39,7 @@ getPost(category: Category, post : string) {
         return this.http.post(this._global.baseAPIUrl +'coding/posturl',   body, options).map((res) => res.json());
     }
 
-postDetails( post : string) {
+    postDetails( post : string) {
     /*var obj = { post : post };
 
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
@@ -57,6 +57,17 @@ postDetails( post : string) {
         .then(postinfo => new PostDetails(postinfo.post_detail))
         .catch(error => console.log(error));
 }*/
+    
+    postRandom() {
+    /*var obj = { post : post };
+
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+        let options = new RequestOptions( {method: RequestMethod.Post, headers: headers });
+
+        let body = this.serializeObj(obj);*/
+
+        return this.http.get(this._global.baseAPIUrl +'coding/postrandom?limit=3').map((res) => res.json());
+    }
 
     // private helper methods
 

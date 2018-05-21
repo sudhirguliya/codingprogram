@@ -84,7 +84,7 @@
 		
 		//Show Sidebar
 		hiddenBarOpener.on('click', function () {
-			alert(hiddenBarOpener);
+			//alert(hiddenBarOpener);
 			hiddenBar.addClass('visible-sidebar');
 		});
 		

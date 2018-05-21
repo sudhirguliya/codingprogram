@@ -14,14 +14,15 @@
                     <div class="top-left col-md-4 col-sm-12 col-xs-12">
                         <div class="trend">Trending: </div>
                         <div class="single-item-carousel owl-carousel owl-theme">
-                            <div class="slide">
-                                <div class="text">Croatia shocks Euro champion Spain Oops! _</div>
-                            </div>
-                            <div class="slide">
-                                <div class="text">Croatia champion Spain Oops! _</div>
-                            </div>
-                            <div class="slide">
-                                <div class="text">Croatia shocks Euro champion.</div>
+                            <!-- <div class="slide"  *ngFor="let randompost of allRandomData">
+                                <div class="text">{{randompost.page_title}}</div>
+                            </div> -->
+                          <div class="slide">
+                                <div class="text">How to Check Apple Mail on Mac</div>
+                            </div><div class="slide">
+                                <div class="text">How to Troubleshoot Content Issue in Email</div>
+                            </div><div class="slide">
+                                <div class="text">How to change Apple ID in iTunes and App Store</div>
                             </div>
                         </div>
                     </div>
@@ -82,12 +83,12 @@
                             <span class="icon-bar"></span>
                             </button>
                         </div>
-                        
+                        <!-- href="{{baseUrl}}{{menu.category_link}}" -->
                         <div class="navbar-collapse collapse clearfix" id="bs-example-navbar-collapse-1">
                             <ul class="navigation clearfix">
-                                <li [routerLinkActive]="['current']" class="dropdown" *ngFor="let menu of allCategories"><a href="{{baseUrl}}{{menu.category_link}}">{{menu.category_name}}</a>
+                                <li [routerLinkActive]="['current']" class="dropdown" *ngFor="let menu of allCategories"><a href="{{baseUrl}}{{menu.category_link}}" >{{menu.category_name}}</a>
                                     <ul>
-                                        <li *ngFor="let submenu of menu.sub"><a href="{{baseUrl}}{{menu.category_link}}/{{submenu.category_link}}">{{submenu.category_name}}</a></li>
+                                        <li *ngFor="let submenu of menu.sub"><a href="{{baseUrl}}{{menu.category_link}}/{{submenu.category_link}}" >{{submenu.category_name}}</a></li>
                                     </ul>
                                 </li>
                             </ul>
