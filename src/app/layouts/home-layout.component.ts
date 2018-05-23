@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { RouterService } from '../_services/router.service'
 import { AppGlobals } from '../app.global.service';
 declare var $:any;
@@ -10,18 +10,50 @@ declare var $:any;
 })
 export class HomeLayoutComponent implements OnInit {
 
-  constructor(private _global: AppGlobals, private routerservice : RouterService) { }
+  constructor(private _elRef : ElementRef, private myBtn: ElementRef, private _global: AppGlobals, private routerservice : RouterService) { }
 
   // array of all items to be paged
   private allCategories: any[];
   private allSubCategories: any[];
   private allRandomData: any[];
   private baseUrl : String;
+  private isActive : number = 1;
 
   ngOnInit(): void {
     this.showMenu();
     this.showRandomPost();
-    this.baseUrl = this._global.baseAppUrl; 
+    this.baseUrl = this._global.baseAppUrl;
+  }
+
+  nextNotes(val) {
+    //var owl = $(this._elRef.nativeElement).find('#btn');
+    //console.log(owl);
+    
+    this._elRef.nativeElement.addEventListener('click', (event) => {
+      var className = $(event.target).attr('data-tab');
+      var res = className.split("-",);
+      this.isActive = res[1];
+      //alert(this.isActive);
+      //console.log(className);
+      //console.log(event.target);
+
+      var target = $(className);
+        
+      if ($(target).is(':visible')){
+        return false;
+      }else{
+        target.parents('.tabs-box').find('.tab-buttons').find('.tab-btn').removeClass('active-btn');
+        //$(this).addClass('active-btn');
+        //console.log($(this));
+        $(className).addClass('active-btn');
+        target.parents('.tabs-box').find('.tabs-content').find('.tab').fadeOut(0);
+        target.parents('.tabs-box').find('.tabs-content').find('.tab').removeClass('active-tab');
+        $(target).fadeIn(300);
+        $(target).addClass('active-tab');
+      }
+      
+      
+    });
   }
 
   showMenu() {
@@ -393,13 +425,16 @@ export class HomeLayoutComponent implements OnInit {
       });        
     }
     
-    
+    /*$('.tab-btn').on('click', function() {
+      alert('testclick clicked');
+    });*/
     //Tabs Box
-    if($('.tabs-box').length){
-      $('.tabs-box .tab-buttons .tab-btn').on('click', function(e) {
+    /*if($('.tabs-box').length){ //alert($('.tabs-box').length);
+      $('.tab-btn').on('click', function(e) { alert('hi');
         e.preventDefault();
+        alert('hi');
         var target = $($(this).attr('data-tab'));
-        
+        alert($(this).attr('data-tab'));
         if ($(target).is(':visible')){
           return false;
         }else{
@@ -411,7 +446,7 @@ export class HomeLayoutComponent implements OnInit {
           $(target).addClass('active-tab');
         }
       });
-    }
+    }*/
     
     
     // Product Carousel Slider
