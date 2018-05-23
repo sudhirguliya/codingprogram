@@ -5,6 +5,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { AppGlobals } from '../app.global.service';
 import { RouterService } from '../_services/router.service';
 import { Observable } from 'rxjs/Observable';
+import { mergeMap } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/forkJoin';
 
@@ -38,6 +39,8 @@ export class LatestPostComponent {
     private post_url : any;
     private category_slug: any;
     private categoryName : any;
+
+    homeworld: Observable<{}>;
 
     ngOnInit() {
         //this.category_url = this.route.params['category'];
@@ -84,6 +87,9 @@ export class LatestPostComponent {
                     }
                 console.log(this.allItems);
             });*/
+            this.homeworld = this.http.get(this._global.baseAPIUrl +'coding/postdata?limit=56').pipe(
+              mergeMap(character => this.http.get(character.homeworld))
+            );
             this.http.get(this._global.baseAPIUrl +'coding/postdata?limit=56')
                 .map((response: Response) => response.json())
                 .subscribe(data => {
