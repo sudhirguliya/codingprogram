@@ -281,193 +281,55 @@
                 <div class="default-tab-box tabs-box">
                     <div class="clearfix">
                         
-                        <!--Column-->
-                        <div class="column col-md-8 col-sm-12 col-xs-12">
-                            <!--Tabs Container-->
-                            <div class="tabs-content">
-                            
-                                <!--Tab / Active Tab-->
-                                <div class="tab active-tab" id="tab-1">
+    <!--Column-->
+    <div class="column col-md-8 col-sm-12 col-xs-12">
+        <!--Tabs Container-->
+        <div class="tabs-content">
+        
+            <!--Tab / Active Tab-->
+            <div class="tab" [ngClass]="{'active-tab': i=='0'}" id="tab-{{i+1}}" *ngFor="let randompost of allRandomData; let i = index">
+                <div class="content">
+                    
+                    <!--News Block Three-->
+                    <div class="news-block-three style-two">
+                        <div class="inner-box">
+                            <div class="image">
+                                <img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="http://www.codingprogrammer.com/admin/upload/{{randompost.image_path}}" alt="{{randompost.image_alt}}" />
+                                <div class="overlay-box">
                                     <div class="content">
-                                        
-                                        <!--News Block Three-->
-                                        <div class="news-block-three style-two">
-                                            <div class="inner-box">
-                                                <div class="image">
-                                                    <img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-15.jpg" alt="" />
-                                                    <div class="overlay-box">
-                                                        <div class="content">
-                                                            <div class="tag"><a href="blog-single-2.html">Travel</a></div>
-                                                            <h3><a href="blog-single-2.html">Yulin Creative meat festival begins in China amid widespread criticism</a></h3>
-                                                            <ul class="post-meta">
-                                                                <li><span class="icon qb-clock"></span>March 17, 2016</li>
-                                                                <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                                <li><span class="icon qb-eye"></span>2470</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
+                                        <div class="tag"><a href="blog-single-2.html">Travel</a></div>
+                                        <h3><a href="blog-single-2.html">{{randompost.page_title}}</a></h3>
+                                        <ul class="post-meta">
+                                            <li><span class="icon qb-clock"></span>March 17, 2016</li>
+                                            <li><span class="icon fa fa-comment-o"></span>9</li>
+                                            <li><span class="icon qb-eye"></span>2470</li>
+                                        </ul>
                                     </div>
                                 </div>
-                            
-                                <!--Tab-->
-                                <div class="tab" id="tab-2">
-                                    <div class="content">
-                                        
-                                        <!--News Block Three-->
-                                        <div class="news-block-three style-two">
-                                            <div class="inner-box">
-                                                <div class="image">
-                                                    <img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-15.jpg" alt="" />
-                                                    <div class="overlay-box">
-                                                        <div class="content">
-                                                            <div class="tag"><a href="blog-single-2.html">Travel</a></div>
-                                                            <h3><a href="blog-single-2.html">Yulin Creative meat festival begins in China amid widespread criticism</a></h3>
-                                                            <ul class="post-meta">
-                                                                <li><span class="icon qb-clock"></span>March 17, 2016</li>
-                                                                <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                                <li><span class="icon qb-eye"></span>2470</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <!--Tab-->
-                                <div class="tab" id="tab-3">
-                                    <div class="content">
-                                        
-                                        <!--News Block Three-->
-                                        <div class="news-block-three style-two">
-                                            <div class="inner-box">
-                                                <div class="image">
-                                                    <img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-15.jpg" alt="" />
-                                                    <div class="overlay-box">
-                                                        <div class="content">
-                                                            <div class="tag"><a href="blog-single-2.html">Travel</a></div>
-                                                            <h3><a href="blog-single-2.html">Yulin Creative meat festival begins in China amid widespread criticism</a></h3>
-                                                            <ul class="post-meta">
-                                                                <li><span class="icon qb-clock"></span>March 17, 2016</li>
-                                                                <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                                <li><span class="icon qb-eye"></span>2470</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <!--Tab-->
-                                <div class="tab" id="tab-4">
-                                    <div class="content">
-                                        
-                                        <!--News Block Three-->
-                                        <div class="news-block-three style-two">
-                                            <div class="inner-box">
-                                                <div class="image">
-                                                    <img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-15.jpg" alt="" />
-                                                    <div class="overlay-box">
-                                                        <div class="content">
-                                                            <div class="tag"><a href="blog-single-2.html">Travel</a></div>
-                                                            <h3><a href="blog-single-2.html">Yulin Creative meat festival begins in China amid widespread criticism</a></h3>
-                                                            <ul class="post-meta">
-                                                                <li><span class="icon qb-clock"></span>March 17, 2016</li>
-                                                                <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                                <li><span class="icon qb-eye"></span>2470</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <!--Tab-->
-                                <div class="tab" id="tab-5">
-                                    <div class="content">
-                                        
-                                        <!--News Block Three-->
-                                        <div class="news-block-three style-two">
-                                            <div class="inner-box">
-                                                <div class="image">
-                                                    <img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-15.jpg" alt="" />
-                                                    <div class="overlay-box">
-                                                        <div class="content">
-                                                            <div class="tag"><a href="blog-single-2.html">Travel</a></div>
-                                                            <h3><a href="blog-single-2.html">Yulin Creative meat festival begins in China amid widespread criticism</a></h3>
-                                                            <ul class="post-meta">
-                                                                <li><span class="icon qb-clock"></span>March 17, 2016</li>
-                                                                <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                                <li><span class="icon qb-eye"></span>2470</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                
                             </div>
                         </div>
+                    </div>
+                    
+                </div>
+            </div>
+        
+            
+        </div>
+    </div>
                         
                         <!--Column-->
                         <div class="column col-md-4 col-sm-12 col-xs-12">
                             <!--Tab Btns-->
                             <ul class="tab-btns tab-buttons clearfix">
-                                <li data-tab="#tab-1" class="tab-btn active-btn">
+                                <li id="tab-{{itab+1}}" #btn (click)="nextNotes(btn)" [ngClass]="itab+1 == isActive ? 'active-btn' : ''"  *ngFor="let randomtab of allRandomData; let itab = index" attr.data-tab="#tab-{{itab+1}}" class="tab-btn">
                                     <!--Widget Post-->
-                                    <article class="widget-post">
-                                        <figure class="post-thumb"><a href="blog-single.html"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/post-thumb-5.jpg" alt=""></a></figure>
-                                        <div class="text"><a href="blog-single.html">Gareth Bale has last laugh as Wales leapfrogs England</a></div>
-                                        <div class="post-info">March 09, 2016</div>
+                                    <article class="widget-post" attr.data-tab="#tab-{{itab+1}}">
+                                        <figure class="post-thumb" attr.data-tab="#tab-{{itab+1}}"><a href="blog-single.html" attr.data-tab="#tab-{{itab+1}}"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="http://www.codingprogrammer.com/admin/upload/{{randomtab.image_path}}" alt="{{randomtab.image_alt}}" attr.data-tab="#tab-{{itab+1}}"></a></figure>
+                                        <div class="text" attr.data-tab="#tab-{{itab+1}}"><a href="blog-single.html">{{randomtab.page_title}}</a></div>
+                                        <div class="post-info" attr.data-tab="#tab-{{itab+1}}">March 09, 2016</div>
                                     </article>
                                 </li>
-                                <li data-tab="#tab-2" class="tab-btn">
-                                    <!--Widget Post-->
-                                    <article class="widget-post">
-                                        <figure class="post-thumb"><a href="blog-single.html"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/post-thumb-2.jpg" alt=""></a></figure>
-                                        <div class="text"><a href="blog-single.html">British Prime Minister David Cameron the nation</a></div>
-                                        <div class="post-info">March 10, 2016</div>
-                                    </article>
-                                </li>
-                                <li data-tab="#tab-3" class="tab-btn">
-                                    <!--Widget Post-->
-                                    <article class="widget-post">
-                                        <figure class="post-thumb"><a href="blog-single.html"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/post-thumb-12.jpg" alt=""></a></figure>
-                                        <div class="text"><a href="blog-single.html">EU and UKIP leader Nigel Farage says result heralds</a></div>
-                                        <div class="post-info">March 11, 2016</div>
-                                    </article>
-                                </li>
-                                <li data-tab="#tab-4" class="tab-btn">
-                                    <!--Widget Post-->
-                                    <article class="widget-post">
-                                        <figure class="post-thumb"><a href="blog-single.html"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-post-3.jpg" alt=""></a></figure>
-                                        <div class="text"><a href="blog-single.html">The British people have voted to leave the European Union</a></div>
-                                        <div class="post-info">Match 12, 2016</div>
-                                    </article>
-                                </li>
-                                <li data-tab="#tab-5" class="tab-btn">
-                                    <!--Widget Post-->
-                                    <article class="widget-post">
-                                        <figure class="post-thumb"><a href="blog-single.html"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/post-thumb-3.jpg" alt=""></a></figure>
-                                        <div class="text"><a href="blog-single.html">Amy Schumer swaps lives with Anna Wintour Anything</a></div>
-                                        <div class="post-info">Match 13, 2016</div>
-                                    </article>
-                                </li>
+                                
                             </ul>
                         </div>
                         
