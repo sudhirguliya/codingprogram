@@ -44,7 +44,7 @@ export class HomeLayoutComponent implements OnInit {
 
   showRandomPost(){
     this.routerservice.postRandom().subscribe(randomdata => {
-      console.log(randomdata);
+      //console.log(randomdata);
       if (randomdata.status == true) {
         //console.log('hi');
         this.allRandomData = randomdata.post_data;
