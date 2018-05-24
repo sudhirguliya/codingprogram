@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { mergeMap } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/operator/mergeMap';
 
 import * as _ from 'underscore';
 import { PagerService } from '../_services/pager.service';
@@ -39,6 +40,7 @@ export class LatestPostComponent {
     private post_url : any;
     private category_slug: any;
     private categoryName : any;
+    private contract : any[];
 
     homeworld: Observable<{}>;
 
@@ -55,7 +57,7 @@ export class LatestPostComponent {
             }
             
         });
-        
+        //console.log(this.category_slug);
         if(this.category_slug){
         this.service.getCategory(this.category_slug).subscribe(category => {
           //console.log(category);
@@ -63,9 +65,9 @@ export class LatestPostComponent {
             //console.log('hi');
             var category_id = category.category_detail.category_id;
             this.categoryName = category.category_detail.category_name;
-
+            this.getPostWithCategory(category_id);
             // get dummy data category_id=category_id&
-            this.http.get(this._global.baseAPIUrl +`coding/postdata?category_id=${category_id}&limit=56`)
+            /*this.http.get(this._global.baseAPIUrl +`coding/postdata?category_id=${category_id}&limit=56`)
                 .map((response: Response) => response.json())
                 .subscribe(data => {
                     // set items to json response
@@ -76,21 +78,13 @@ export class LatestPostComponent {
                         this.setPage(1);
                     }
                     
-                });
+                });*/
+
           } else {
-            /*this.getDataFromTwoResources().subscribe(responseList => {
-                
-                this.allItems = responseList[0].post_data;
-                this.catShow = responseList[1];
-                if(this.allItems){
-                        this.setPage(1);
-                    }
-                console.log(this.allItems);
-            });*/
-            this.homeworld = this.http.get(this._global.baseAPIUrl +'coding/postdata?limit=56').pipe(
-              mergeMap(character => this.http.get(character.homeworld))
-            );
-            this.http.get(this._global.baseAPIUrl +'coding/postdata?limit=56')
+            this.getPostWithCategory();
+            //console.log(this.contract);
+            
+            /*this.http.get(this._global.baseAPIUrl +'coding/postdata?limit=56')
                 .map((response: Response) => response.json())
                 .subscribe(data => {
                     // set items to json response
@@ -100,27 +94,65 @@ export class LatestPostComponent {
                     if(this.allItems){
                         this.setPage(1);
                     }
-                });
+                });*/
           } 
         });
         
         }else {
-              this.http.get(this._global.baseAPIUrl +'coding/postdata?limit=56')
-                .map((response: Response) => response.json())
-                .subscribe(data => {
-                    // set items to json response
-                    this.allItems = data.post_data;
-
-                    // initialize to page 1
-                    if(this.allItems){
-                        this.setPage(1);
-                    }
-                });
+              this.getPostWithCategory();
           }
 
         //this.clickPost(2, 'microphone-issue-in-macbook');
         
     }
+
+    /*getBookAuthors(bookId: string) {
+      return this.http.get(`/books/${bookId}`).map(res => res.json())
+            .flatMap((book) => {
+              return Observable.forkJoin(book.authors.map((author) => {
+                return this.http.get(`/authors/${author.id}`).map(res => res.json());
+              })
+            });
+    }*/
+
+    getPostWithCategory(category_id : number = 0) {
+        var url;
+        //console.log(category_id);
+        if(category_id == 0){
+            url = this._global.baseAPIUrl +'coding/postdata?limit=56';
+        }else{
+            url = this._global.baseAPIUrl +`coding/postdata?category_id=${category_id}&limit=56`;
+        }
+        this.http.get(url)
+            .map((res: Response) => res.json())
+            .flatMap((posts) => {
+                //console.log(posts.post_data);
+                if (posts.post_data.length > 0) {
+                    return Observable.forkJoin(
+                      posts.post_data.map((cat: any) => {
+                          //console.log(cat.category_id);
+                        return this.http.get(this._global.baseAPIUrl +`coding/category?category_id=${cat.category_id}`)
+                          .map((res: any) => {
+                            let details: any = res.json();
+                            cat.details = details;
+                            return cat;
+                          });
+                      })
+                    );
+                    
+                  }
+            })
+            .subscribe((res) => 
+                {
+                    this.allItems = res;
+                    //console.log(this.allItems[0].details.category_detail.category_name)
+                    // initialize to page 1
+                    if(this.allItems){
+                        this.setPage(1);
+                    }
+                });
+            //console.log(this.contract);
+        }
 
     clickPost(category_id:number, post:string){
         //console.log(this._global.baseAPIUrl +`coding/clickpost?category_id=${category_id}`);

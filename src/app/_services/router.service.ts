@@ -66,7 +66,7 @@ getPost(category: Category, post : string) {
 
         let body = this.serializeObj(obj);*/
 
-        return this.http.get(this._global.baseAPIUrl +'coding/postrandom?limit=5').map((res) => res.json());
+        return this.http.get(this._global.baseAPIUrl +'coding/postrandom?limit=4').map((res) => res.json());
     }
 
     // private helper methods
