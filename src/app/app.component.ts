@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 declare var $:any;
 
 @Component({
@@ -6,11 +7,13 @@ declare var $:any;
   selector: 'app-root',
   //templateUrl: './app.component.html',
   //styleUrls: ['./app.component.css']
-  template: '<router-outleth></router-outlet>',
+  template: '<router-outlet></router-outlet>',
   //encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   title = 'Goconsult!';
+  constructor(public router: Router) {}
+
 
   ngOnInit(): void {
   	//alert($('.app-loading').length);

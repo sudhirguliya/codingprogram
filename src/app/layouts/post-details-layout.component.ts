@@ -22,21 +22,37 @@ export class PostDetailsLayoutComponent implements OnInit {
   	private allSubCategories: any[];
   	private baseUrl : String;
 
-  	constructor(private route: ActivatedRoute, private service: RouterService, private _global: AppGlobals) { }
+  	constructor(private route: ActivatedRoute, private service: RouterService, private _global: AppGlobals) {
+        this.route.params
+          .map((data) => data['post'])
+          .subscribe(
+            (postdetails) => {
+              console.log(postdetails);
+
+              this.service.postDetails(postdetails)
+                .subscribe((postdetails) => {
+                  this.postdesc = postdetails.post_detail;
+                  console.log(this.postdesc) 
+                });
+            }
+          );
+      }
 
   	ngOnInit(): void {
-  		this.showMenu();
-    	this.baseUrl = this._global.baseAppUrl; 
-
-	  this.route.params.pipe(
+  		
+	  /*this.route.params.pipe(
 	    switchMap(
 	      (params: Params) => 
 	       this.service.postDetails(params['post'])))
 	    .subscribe((postdetails) => {
-	    	
 	    	this.postdesc = postdetails.post_detail;
-	    	//console.log(this.postdesc) 
-	    });
+	    	console.log(this.postdesc) 
+	    });*/
+
+     
+
+      this.showMenu();
+      this.baseUrl = this._global.baseAppUrl; 
 	}
 
 	showMenu() {
