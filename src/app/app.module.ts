@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
@@ -32,6 +32,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
 import { RemoveHtmlPipe } from './pipes/remove-html.pipe';
 
+//import { PostModule } from './post/post.module';
+
 @NgModule({
   declarations: [
     AppComponent, HomeLayoutComponent, NotFoundComponent, LatestPostComponent, CategoryPostLayoutComponent, PostDetailsLayoutComponent,
@@ -40,8 +42,10 @@ import { RemoveHtmlPipe } from './pipes/remove-html.pipe';
   imports: [
     BrowserModule, HttpModule, FormsModule, RouterModule,
     //RouterModule.forRoot(routes) //, { enableTracing: true })
-    routing,
+    routing
   ],
+  //exports: [LatestPostComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [AppGlobals,RouterService, CategoryResolve, SubCategoryResolve, PostResolve, PagerService],
   bootstrap: [AppComponent]
 })

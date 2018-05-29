@@ -35,7 +35,7 @@
                                     </ul>
                                 </div>
                                 <div class="text">
-                                    <p [innerHTML]="postdesc?.page_description"></p>
+                                    <p [innerHTML]="postdesc?.page_description | postHtml"></p>
                                 </div>
                                 <!--post-share-options-->
                                 <div class="post-share-options">

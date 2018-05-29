@@ -3,6 +3,7 @@ import { Routes,
      RouterModule } from '@angular/router';
 
 import { PostComponent } from './post.component';
+import { PostResolve } from '../_services/post-resolve.service';
 
 const routes: Routes = [
   {
@@ -10,6 +11,9 @@ const routes: Routes = [
     component: PostComponent,
     data: {
       title: 'Post Details'
+    },
+    resolve: {
+        post: PostResolve
     }
   }
 ];

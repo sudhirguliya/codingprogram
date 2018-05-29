@@ -7,8 +7,7 @@ import { PostRoutingModule } from './post-routing.module';
 import { RouterModule } from '@angular/router';
 
 import { PostComponent } from './post.component';
-//import { EscapeHtmlPipe } from '../pipes/keep-html.pipe';
-//import { RemoveHtmlPipe } from '../pipes/remove-html.pipe';
+import { PostHtmlPipe } from './post-html.pipe';
 
 @NgModule({
   imports: [
@@ -19,6 +18,6 @@ import { PostComponent } from './post.component';
     PostRoutingModule,
     RouterModule
   ],
-  declarations: [ PostComponent ]
+  declarations: [ PostComponent, PostHtmlPipe],
 })
 export class PostModule { }
