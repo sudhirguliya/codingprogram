@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+//import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, ChangeDetectionStrategy, ElementRef} from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -16,11 +17,13 @@ import { PagerService } from '../_services/pager.service';
 @Component({
   selector: 'latest-post-show',
   //template : 'test menu'
-  templateUrl: './latest-post-show.component.html'
+  templateUrl: './latest-post-show.component.html',
+  //changeDetection: ChangeDetectionStrategy.OnPush,
+  inputs: ['options']
 })
 
 export class LatestPostShowComponent {
-
+    @Input() options: any;
     constructor(private http:Http,  private pagerService: PagerService, private _global: AppGlobals, private router: Router, private route: ActivatedRoute, private location: Location, private service: RouterService,) {
 
     }
@@ -41,12 +44,23 @@ export class LatestPostShowComponent {
     private category_slug: any;
     private categoryName : any;
     private contract : any[];
+    private sub :any;
 
-    homeworld: Observable<{}>;
+    /*ngOnChanges(...args: any[]) {
+        console.log('onChange fired');
+        console.log('changing', args);
+    }*/
 
-    ngOnInit() {
+    ngOnChanges(changes: SimpleChanges) {
+      //console.log(changes);
+      if (changes['options']) {
+          this.category_slug = this.options;
+          //console.log('And '+ this.category_slug +' is '+ typeof(this.category_slug));
+        
+        //this.allMsgChangeLogs.push(changeLog);
+
         //this.category_url = this.route.params['category'];
-        this.route.params.subscribe(params => {
+        /*this.sub = this.route.params.subscribe(params => {
             console.log(params);
             if (params.subcategory) {
                 this.category_slug = params.subcategory;
@@ -56,7 +70,7 @@ export class LatestPostShowComponent {
                 this.category_url = this._global.baseAppUrl+params.category;
             }
             
-        });
+        });*/
         //console.log(this.category_slug);
         if(this.category_slug){
         this.service.getCategory(this.category_slug).subscribe(category => {
@@ -65,6 +79,7 @@ export class LatestPostShowComponent {
             //console.log('hi');
             var category_id = category.category_detail.category_id;
             this.categoryName = category.category_detail.category_name;
+            //console.log(this.categoryName);
             this.getPostWithCategory(category_id);
             // get dummy data category_id=category_id&
             /*this.http.get(this._global.baseAPIUrl +`coding/postdata?category_id=${category_id}&limit=56`)
@@ -102,9 +117,15 @@ export class LatestPostShowComponent {
               this.getPostWithCategory();
           }
 
+       } // end if condition of change option
+
         //this.clickPost(2, 'microphone-issue-in-macbook');
         
     }
+
+    /*ngOnDestroy() {
+        this.sub.unsubscribe();
+      }*/
 
     /*getBookAuthors(bookId: string) {
       return this.http.get(`/books/${bookId}`).map(res => res.json())
@@ -145,6 +166,7 @@ export class LatestPostShowComponent {
             .subscribe((res) => 
                 {
                     this.allItems = res;
+                    //console.log(res);
                     //console.log(this.allItems[0].details.category_detail.category_name)
                     // initialize to page 1
                     if(this.allItems){

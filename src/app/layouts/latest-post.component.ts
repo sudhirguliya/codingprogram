@@ -19,7 +19,7 @@ import { PagerService } from '../_services/pager.service';
   templateUrl: './latest-post.component.html'
 })
 
-export class LatestPostComponent {
+export class LatestPostComponent implements OnInit, OnDestroy {
 
     constructor(private http:Http,  private pagerService: PagerService, private _global: AppGlobals, private router: Router, private route: ActivatedRoute, private location: Location, private service: RouterService,) {
 
@@ -28,6 +28,7 @@ export class LatestPostComponent {
     // array of all items to be paged
     private allItems: any[];
     private catShow : any[];
+    private sub : any;
 
     // pager object
     pager: any = {};
@@ -46,7 +47,7 @@ export class LatestPostComponent {
 
     ngOnInit() {
         //this.category_url = this.route.params['category'];
-        this.route.params.subscribe(params => {
+        this.sub = this.route.params.subscribe(params => {
             console.log(params);
             if (params.subcategory) {
                 this.category_slug = params.subcategory;
@@ -105,6 +106,10 @@ export class LatestPostComponent {
         //this.clickPost(2, 'microphone-issue-in-macbook');
         
     }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+      }
 
     /*getBookAuthors(bookId: string) {
       return this.http.get(`/books/${bookId}`).map(res => res.json())

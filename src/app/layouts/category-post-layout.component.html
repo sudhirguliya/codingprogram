@@ -86,10 +86,10 @@
                         <div class="navbar-collapse collapse clearfix" id="bs-example-navbar-collapse-1">
                             <ul class="navigation clearfix">
                                 <!-- [routerLink]="['', menu.category_link]" -->
-                                <li [routerLinkActive]="['current']" class="dropdown" *ngFor="let menu of allCategories"><a  href="{{baseUrl}}{{menu.category_link}}">{{menu.category_name}}</a>
+                                <li [routerLinkActive]="['current']" class="dropdown" *ngFor="let menu of allCategories"><a  [routerLink]="['/', menu.category_link]" >{{menu.category_name}}</a>
                                     <ul>
                                         <!-- [routerLink]="['', menu.category_link+''+submenu.category_link]" -->
-                                        <li *ngFor="let submenu of menu.sub"><a  href="{{baseUrl}}{{menu.category_link}}/{{submenu.category_link}}">{{submenu.category_name}}</a></li>
+                                        <li *ngFor="let submenu of menu.sub"><a  [routerLink]="['/', menu.category_link, submenu.category_link]">{{submenu.category_name}}</a></li>
                                     </ul>
                                 </li>
                             </ul>

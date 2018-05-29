@@ -9,8 +9,9 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-show',
+  
   templateUrl: './show.component.html',
-  styleUrls: ['./show.component.css'],
+  styleUrls: ['./show.component.css']
 })
 export class ShowComponent implements OnInit {
     //postdetails: PostDetails;
@@ -19,9 +20,25 @@ export class ShowComponent implements OnInit {
     //private allCategories: any[];
     //private allSubCategories: any[];
     //private baseUrl : String;
+    private category_url: any;
+    private post_url : any;
+    private category_slug: string;
+    private categoryName : any;
+    private sub : any;
 
     constructor(private route: ActivatedRoute, private router: Router, private http: Http, private service: RouterService, private _global: AppGlobals ) {
-       
+       this.sub = this.route.params.subscribe(params => {
+            //console.log(params);
+            if (params.subcategory) {
+                this.category_slug = params.subcategory;
+                this.category_url = this._global.baseAppUrl+params.category+'/'+params.subcategory;
+            }else{
+                this.category_slug = params.category;
+                this.category_url = this._global.baseAppUrl+params.category;
+            }
+            
+        });
+
        /*this.route.params
           .map((data) => data['post'])
           .subscribe(
@@ -49,4 +66,8 @@ export class ShowComponent implements OnInit {
     ngOnInit() {
       
     }
+
+    /*ngOnDestroy() {
+      this.category_slug.unsubscribe();
+    }*/
 }
