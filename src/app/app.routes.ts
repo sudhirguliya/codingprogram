@@ -21,19 +21,29 @@ import { PostDetailsLayoutComponent } from './layouts/post-details-layout.compon
 
 // Define which component should be loaded based on the current URL
 const appRoutes: Routes = [
-  { path: '', component: HomeLayoutComponent },
+  { path: '', component: HomeLayoutComponent,
+  },
  
-  { path: 'home',   component: HomeLayoutComponent }, // , pathMatch: 'full'
+  { path: 'home', 
+    redirectTo: '',
+    pathMatch: 'full' }, // , pathMatch: 'full'
   {
     path: ':category',
-    component: HomeLayoutComponent,
-    /*resolve: {
+    component: CategoryPostLayoutComponent,
+    resolve: {
           category: CategoryResolve
-    },*/
+    },
     children: [
       {
+        path: '',
+        loadChildren: './show/show.module#ShowModule'
+      },
+      {
         path: 'post/:post',
-        loadChildren: './post/post.module#PostModule'
+        loadChildren: './post/post.module#PostModule',
+        resolve: {
+          post: PostResolve
+        }
       }
     ]
   },
@@ -42,15 +52,26 @@ const appRoutes: Routes = [
       resolve: {
         post: PostResolve
       }
-  },
+  }, */
   {
     path: ':category/:subcategory',
     component: CategoryPostLayoutComponent,
     resolve: {
           subcategory: SubCategoryResolve
+        },
+      children: [
+        {
+          path: '',
+          loadChildren: './show/show.module#ShowModule'
+        },
+        {
+          path: 'post/:post',
+          loadChildren: './post/post.module#PostModule'
         }
+      ]
+
   },
-  {
+  /* {
     path: ':category/:subcategory/post/:post',
     component: PostDetailsLayoutComponent,
     resolve: {

@@ -27,12 +27,12 @@ export class PostDetailsLayoutComponent implements OnInit {
           .map((data) => data['post'])
           .subscribe(
             (postdetails) => {
-              console.log(postdetails);
+              //console.log("post " +postdetails);
 
               this.service.postDetails(postdetails)
                 .subscribe((postdetails) => {
                   this.postdesc = postdetails.post_detail;
-                  console.log(this.postdesc) 
+                  //console.log(this.postdesc) 
                 });
             }
           );

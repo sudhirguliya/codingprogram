@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform, NgModule } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
-@Pipe({ name: 'keepHtml', pure: false })
+@Pipe({ name: 'postHtml', pure: false })
 @NgModule({
-  declarations: [ EscapeHtmlPipe ],
-  exports: [ EscapeHtmlPipe ]
+  declarations: [ PostHtmlPipe ],
+  exports: [ PostHtmlPipe ]
 })
 
-export class EscapeHtmlPipe implements PipeTransform {
+export class PostHtmlPipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {
   }
 
