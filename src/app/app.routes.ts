@@ -1,5 +1,5 @@
 // Import our dependencies
-import { Routes , Router, RouterModule } from '@angular/router';
+import { Routes , Router, RouterModule, PreloadAllModules } from '@angular/router';
 //import { HomeComponent } from './home/home.component';
 //import { LoginComponent } from './login/login.component';
 //import { LogoutComponent } from './logout/logout.component';
@@ -22,20 +22,22 @@ import { PostDetailsLayoutComponent } from './layouts/post-details-layout.compon
 // Define which component should be loaded based on the current URL
 const appRoutes: Routes = [
   { path: '', component: HomeLayoutComponent },
-  //{ path: 'login',  component: LoginComponent},
-  //{ path: 'logout',  component: LogoutComponent},
-  //{ path: 'signup', component: SignupComponent },
- // { path: 'register', component: SignupComponent },
+ 
   { path: 'home',   component: HomeLayoutComponent }, // , pathMatch: 'full'
-  // { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   {
     path: ':category',
-    component: CategoryPostLayoutComponent,
-    resolve: {
+    component: HomeLayoutComponent,
+    /*resolve: {
           category: CategoryResolve
-        }
+    },*/
+    children: [
+      {
+        path: 'post/:post',
+        loadChildren: './post/post.module#PostModule'
+      }
+    ]
   },
-  {
+  /*{
     path: ":category/post/:post", component: PostDetailsLayoutComponent,
       resolve: {
         post: PostResolve
@@ -54,12 +56,12 @@ const appRoutes: Routes = [
     resolve: {
           post: PostResolve
         }
-  },
+  }, */
 
   { path: '404', component: NotFoundComponent },
   { path: '**',  component: NotFoundComponent },
 ];
 
 export const routing = RouterModule.forRoot(appRoutes, {
-      useHash: false
+      useHash: false, preloadingStrategy: PreloadAllModules
     });
