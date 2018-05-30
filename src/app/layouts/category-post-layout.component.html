@@ -134,7 +134,7 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="index.html" class="img-responsive" title=""></a>
+                    <a href="{{baseUrl}}" class="img-responsive" title=""></a>
                 </div>
                 
                 <!--Right Col-->
@@ -152,9 +152,9 @@
                         
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li class="current dropdown" *ngFor="let menu of allCategories"><a href="{{baseUrl}}{{menu.category_link}}">{{menu.category_name}}</a>
+                                <li class="current dropdown" *ngFor="let menu of allCategories"><a [routerLink]="['/', menu.category_link]">{{menu.category_name}}</a>
                                     <ul>
-                                        <li *ngFor="let submenu of menu.sub"><a href="{{baseUrl}}{{menu.category_link}}/{{submenu.category_link}}">{{submenu.category_name}}</a></li>
+                                        <li *ngFor="let submenu of menu.sub"><a [routerLink]="['/', menu.category_link, submenu.category_link]">{{submenu.category_name}}</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -179,45 +179,17 @@
         <!-- Hidden Bar Wrapper -->
         <div class="hidden-bar-wrapper">
             <div class="logo">
-            	<a href="index.html"></a>
+            	<a href="{{baseUrl}}"></a>
             </div>
             <!-- .Side-menu -->
             <div class="side-menu">
             	<!--navigation-->
                 <ul class="navigation clearfix">
-                    <li class="current dropdown"><a href="#">Home</a>
+                    <li class="current dropdown"*ngFor="let menu of allCategories"><a [routerLink]="['/', menu.category_link]">{{menu.category_name}}</a>
                         <ul>
-                            <li><a href="index-1.html">Home 01</a></li>
-                            <li><a href="index-2.html">Home 02</a></li>
-                            <li><a href="index-3.html">Home 03</a></li>
-                            <li><a href="index-4.html">Home 04</a></li>
-                            <li><a href="index-5.html">Home 05</a></li>
-                            <li><a href="index-6.html">Home 06</a></li>
-                            <li><a href="index-7.html">Home 07</a></li>
+                            <li *ngFor="let submenu of menu.sub"><a [routerLink]="['/', menu.category_link, submenu.category_link]">{{submenu.category_name}}</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#">Headers</a>
-                        <ul>
-                            <li><a href="header-1.html">Header 01</a></li>
-                            <li><a href="header-2.html">Header 02</a></li>
-                            <li><a href="header-3.html">Header 03</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="gallery.html">gallery</a></li>
-                    <li class="dropdown"><a href="#">Blog</a>
-                        <ul>
-                            <li><a href="blog-single.html">blog Single One</a></li>
-                            <li><a href="blog-single-2.html">Blog Single Two</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="#">Shop</a>
-                        <ul>
-                            <li><a href="shop.html">Our Shop</a></li>
-                            <li><a href="shop-single.html">Shop Single</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html">Contact</a></li>
                  </ul>
             </div>
             <!-- /.Side-menu -->
@@ -232,28 +204,6 @@
                             <button type="submit" class="theme-btn"><span class="fa fa-search"></span></button>
                         </div>
                     </form>
-                </div>
-                
-                <!--Mobile Cart-->
-                <div class="mobile-cart">
-                	<a href="shop-single.html" class="clearfix">
-                    	<div class="pull-left">
-                        	<div class="text">0 items 0.00$</div>
-                        </div>
-                        <div class="pull-right">
-                        	<span class="icon fa fa-shopping-cart"></span>
-                        </div>
-                    </a>
-                </div>
-                
-                <!--Language Dropdown-->
-                <div class="language dropdown"><a class="btn btn-default dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#"> English <span class="icon fa fa-angle-down"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><a href="#">English</a></li>
-                        <li><a href="#">German</a></li>
-                        <li><a href="#">Arabic</a></li>
-                        <li><a href="#">Hindi</a></li>
-                    </ul>
                 </div>
                 
                 <!--Social Links-->

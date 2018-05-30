@@ -31,7 +31,7 @@ export class LatestPostShowComponent {
     // array of all items to be paged
     private allItems: any[];
     private catShow : any[];
-
+    loading = false;
     // pager object
     pager: any = {};
 
@@ -50,6 +50,9 @@ export class LatestPostShowComponent {
         console.log('onChange fired');
         console.log('changing', args);
     }*/
+    ngOnInit() {
+      this.loading = true;
+    }
 
     ngOnChanges(changes: SimpleChanges) {
       //console.log(changes);
@@ -166,13 +169,15 @@ export class LatestPostShowComponent {
             .subscribe((res) => 
                 {
                     this.allItems = res;
+                    this.loading = false;
                     //console.log(res);
                     //console.log(this.allItems[0].details.category_detail.category_name)
                     // initialize to page 1
                     if(this.allItems){
                         this.setPage(1);
                     }
-                });
+                },
+                ()=>this.loading = false);
             //console.log(this.contract);
         }
 

@@ -39,6 +39,17 @@ getPost(category: Category, post : string) {
         return this.http.post(this._global.baseAPIUrl +'coding/posturl',   body, options).map((res) => res.json());
     }
 
+    getMetaPost(category: number) {
+        var obj = { post_id : category };
+        //console.log(obj);
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+        let options = new RequestOptions( {method: RequestMethod.Post, headers: headers });
+
+        let body = this.serializeObj(obj);
+
+        return this.http.post(this._global.baseAPIUrl +'coding/metapost',   body, options).map((res) => res.json());
+    }
+
     postDetails( post : string) {
     /*var obj = { post : post };
 

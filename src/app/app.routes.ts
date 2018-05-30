@@ -43,7 +43,8 @@ const appRoutes: Routes = [
         loadChildren: './post/post.module#PostModule',
         resolve: {
           post: PostResolve
-        }
+        },
+        data: { title: 'String comparison title', metaDescription: 'String comparison meta description content' }
       }
     ]
   },

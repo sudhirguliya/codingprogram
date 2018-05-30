@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { Title, Meta } from '@angular/platform-browser';
 import { RouterService } from '../_services/router.service';
 import { AppGlobals } from '../app.global.service';
 import { PostDetails } from '../shared/models/postdetails';
@@ -20,8 +21,24 @@ export class PostComponent implements OnInit {
     private allSubCategories: any[];
     private baseUrl : String;
 
-    constructor(private route: ActivatedRoute, private router: Router, private http: Http, private service: RouterService, private _global: AppGlobals ) {
+    blogpostId: number;
+    metatitle: string;
+    description: string;
+    keyboards: string;
+
+    constructor(private title: Title, private meta: Meta, private route: ActivatedRoute, private router: Router, private http: Http, private service: RouterService, private _global: AppGlobals ) {
+
        
+       this.meta.addTag({ name: 'author', content: 'Sudhir Chaudhary' });
+        const author = this.meta.getTag('name=author');
+        this.meta.removeTagElement(author);
+
+        const description = this.meta.getTag('name=description');
+        this.meta.removeTagElement(description);
+
+        const keywords = this.meta.getTag('name=keywords');
+        this.meta.removeTagElement(keywords); 
+
        /*this.route.params
           .map((data) => data['post'])
           .subscribe(
@@ -35,20 +52,37 @@ export class PostComponent implements OnInit {
                 });
             }
           );*/
-
-        this.route.params.pipe(
-        switchMap(
-          (params: Params) => 
-           this.service.postDetails(params['post'])))
-        .subscribe((postdetails) => {
-          this.postdesc = postdetails.post_detail;
-          //console.log(this.postdesc) 
-        });
     }
  
     ngOnInit() {
       this.showMenu();
       this.baseUrl = this._global.baseAppUrl; 
+
+      this.route.params.pipe(
+        switchMap(
+          (params: Params) => 
+           this.service.postDetails(params['post'])))
+
+        .subscribe(postdetails => {
+          this.postdesc = postdetails.post_detail;
+          this.blogpostId = postdetails.post_detail.id;
+          //console.log(this.blogpostId) 
+          this.service.getMetaPost(this.blogpostId)
+            .subscribe(item => {
+                  //console.log(item.post_meta);
+                  if(item.status == true){
+                    this.metatitle = item.post_meta.meta_title;
+                    this.description = item.post_meta.meta_description;
+                    this.keyboards = item.post_meta.meta_keywords;
+
+                    this.title.setTitle(this.metatitle);
+                    this.meta.addTag({ name: 'description', content: this.description });
+                    this.meta.addTag({ name: 'keywords', content: this.keyboards });
+                  }
+                  
+              })
+        });
+
     }
 
   showMenu() {
