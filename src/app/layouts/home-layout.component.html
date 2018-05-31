@@ -55,7 +55,7 @@
                 <div class="clearfix">
                     
                     <div class="pull-left logo-outer">
-                        <div class="logo"><a href="{{baseUrl}}"></a></div>
+                        <div class="logo"><a [routerLink]="['/', baseUrl]"></a></div>
                     </div>
                     
                     <div class="pull-right upper-right clearfix">
@@ -134,7 +134,7 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="{{baseUrl}}" class="img-responsive" title=""></a>
+                    <a [routerLink]="['/', baseUrl]" class="img-responsive" title=""></a>
                 </div>
                 
                 <!--Right Col-->
@@ -152,9 +152,9 @@
                         
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li class="current dropdown" *ngFor="let menu of allCategories"><a href="{{baseUrl}}{{menu.category_link}}">{{menu.category_name}}</a>
+                                <li class="current dropdown" *ngFor="let menu of allCategories"><a [routerLink]="['/', menu.category_link]">{{menu.category_name}}</a>
                                     <ul>
-                                        <li *ngFor="let submenu of menu.sub"><a href="{{baseUrl}}{{menu.category_link}}/{{submenu.category_link}}">{{submenu.category_name}}</a></li>
+                                        <li *ngFor="let submenu of menu.sub"><a [routerLink]="['/', menu.category_link, submenu.category_link]">{{submenu.category_name}}</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -180,7 +180,7 @@
         <!-- Hidden Bar Wrapper -->
         <div class="hidden-bar-wrapper">
             <div class="logo">
-            	<a href="{{baseUrl}}"></a>
+            	<a [routerLink]="['/', baseUrl]"></a>
             </div>
             <!-- .Side-menu -->
             <div class="side-menu">

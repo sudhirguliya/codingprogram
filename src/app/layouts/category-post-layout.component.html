@@ -54,7 +54,7 @@
                 <div class="clearfix">
                     
                     <div class="pull-left logo-outer">
-                        <div class="logo"><a href="{{baseUrl}}"></a></div>
+                        <div class="logo"><a [routerLink]="['../', baseUrl]"></a></div>
                     </div>
                     
                     <div class="pull-right upper-right clearfix">
@@ -134,7 +134,7 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="{{baseUrl}}" class="img-responsive" title=""></a>
+                    <a [routerLink]="['../', baseUrl]" class="img-responsive" title=""></a>
                 </div>
                 
                 <!--Right Col-->
@@ -179,7 +179,7 @@
         <!-- Hidden Bar Wrapper -->
         <div class="hidden-bar-wrapper">
             <div class="logo">
-            	<a href="{{baseUrl}}"></a>
+            	<a [routerLink]="['../', baseUrl]"></a>
             </div>
             <!-- .Side-menu -->
             <div class="side-menu">

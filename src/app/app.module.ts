@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import * as $ from 'jquery';
+//import { MetaModule, MetaConfig, MetaService } from 'ng2-meta';
 
 //Routing
 import { routing } from './app.routes';
@@ -33,6 +34,17 @@ import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
 import { RemoveHtmlPipe } from './pipes/remove-html.pipe';
 
 //import { PostModule } from './post/post.module';
+/*const metaConfig: MetaConfig = {
+  //Append a title suffix such as a site name to all titles
+  //Defaults to false
+  useTitleSuffix: true,
+  defaults: {
+    title: 'Default title for pages without meta in their route',
+    titleSuffix: ' | Site Name',
+    'og:image': 'http://example.com/default-image.png',
+    'any other': 'arbitrary tag can be used'
+  }
+};*/
 
 @NgModule({
   declarations: [
@@ -42,7 +54,8 @@ import { RemoveHtmlPipe } from './pipes/remove-html.pipe';
   imports: [
     BrowserModule, HttpModule, FormsModule, RouterModule,
     //RouterModule.forRoot(routes) //, { enableTracing: true })
-    routing
+    routing,
+    //MetaModule.forRoot()
   ],
   //exports: [LatestPostComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

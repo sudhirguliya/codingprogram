@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { RouterService } from '../_services/router.service'
 import { AppGlobals } from '../app.global.service';
+import { Title, Meta } from '@angular/platform-browser';
 declare var $:any;
 
 @Component({
@@ -10,7 +11,7 @@ declare var $:any;
 })
 export class HomeLayoutComponent implements OnInit {
 
-  constructor(private _elRef : ElementRef, private myBtn: ElementRef, private _global: AppGlobals, private routerservice : RouterService) { }
+  constructor(private title: Title, private meta: Meta, private _elRef : ElementRef, private myBtn: ElementRef, private _global: AppGlobals, private routerservice : RouterService) { }
 
   // array of all items to be paged
   private allCategories: any[];
@@ -19,10 +20,19 @@ export class HomeLayoutComponent implements OnInit {
   private baseUrl : String;
   private isActive : number = 1;
 
+  metatitle: string;
+  description: string;
+  keyboards: string;
+
   ngOnInit(): void {
     this.showMenu();
     this.showRandomPost();
     this.baseUrl = this._global.baseAppUrl;
+
+    this.title.setTitle('Coding Programmer - blog');
+    this.meta.addTag({ name: 'description', content:  'Instant Apple Technical Support other Apple device like iPhone, Mac, iPad, OS Support by TechExpertizer at affordable price. Call at 1-855-602-7997 to support.'});
+    this.meta.addTag({ name: 'keywords', content: 'Apple Tech Support, Support for Apple Devices, iPhone Support, iPad Support, Mac Support, OS Support' });
+    this.meta.addTag({ name: 'google-site-verification', content: "e4Ffk0W6U1GrUiOtubqj-de-6q7TpVPqJ5l3ktFAhbM" });
   }
 
   nextNotes(val) {

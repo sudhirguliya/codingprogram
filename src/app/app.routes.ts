@@ -1,3 +1,4 @@
+//import { MetaGuard } from 'ng2-meta';
 // Import our dependencies
 import { Routes , Router, RouterModule, PreloadAllModules } from '@angular/router';
 //import { HomeComponent } from './home/home.component';
@@ -44,7 +45,6 @@ const appRoutes: Routes = [
         resolve: {
           post: PostResolve
         },
-        data: { title: 'String comparison title', metaDescription: 'String comparison meta description content' }
       }
     ]
   },
@@ -85,5 +85,5 @@ const appRoutes: Routes = [
 ];
 
 export const routing = RouterModule.forRoot(appRoutes, {
-      useHash: false, preloadingStrategy: PreloadAllModules
+      useHash: false, enableTracing: true, preloadingStrategy: PreloadAllModules
     });
