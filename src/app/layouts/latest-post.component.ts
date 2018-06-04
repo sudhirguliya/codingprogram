@@ -16,20 +16,27 @@ import { PagerService } from '../_services/pager.service';
 @Component({
   selector: 'latest-post',
   //template : 'test menu'
-  templateUrl: './latest-post.component.html'
+  templateUrl: './latest-post.component.html',
+  styles : [`.post_infinite{
+  height: 400px;
+  weight: auto;
+  overflow : scroll;
+}`]
 })
 
-export class LatestPostComponent implements OnInit, OnDestroy {
+export class LatestPostComponent implements OnInit {
+  currentPage: number = 0;
 
-    constructor(private http:Http,  private pagerService: PagerService, private _global: AppGlobals, private router: Router, private route: ActivatedRoute, private location: Location, private service: RouterService,) {
+   news: Array<any> = [];
+  allNews: String[] = [];
 
-    }
+  scrollCallback;
 
-    // array of all items to be paged
+  // array of all items to be paged
     private allItems: any[];
     private catShow : any[];
     private sub : any;
-
+    loading = false;
     // pager object
     pager: any = {};
 
@@ -40,94 +47,41 @@ export class LatestPostComponent implements OnInit, OnDestroy {
     private category_url: any;
     private post_url : any;
     private category_slug: any;
-    private categoryName : any;
+    categoryName : any;
     private contract : any[];
 
     homeworld: Observable<{}>;
 
+    constructor(private http:Http,  private pagerService: PagerService, private _global: AppGlobals, private router: Router, private route: ActivatedRoute, private location: Location, private service: RouterService,) {
+         this.scrollCallback = this.getStories.bind(this);
+
+    }
+
+    getStories() {
+        return this.service.getLatestPost(this.currentPage).do(this.processData);
+    }
+
+    private processData = (news) => {
+        //console.log(news);
+        //this.currentPage++;
+        this.news = this.news.concat(news);
+        //this.allNews = this.news[0].user_status;
+        //this.allNews.push(this.news[0].post_data);
+        console.log(this.news);
+        //console.log(news.json().user_status);
+      }
+
     ngOnInit() {
-        //this.category_url = this.route.params['category'];
-        this.sub = this.route.params.subscribe(params => {
-            console.log(params);
-            if (params.subcategory) {
-                this.category_slug = params.subcategory;
-                this.category_url = this._global.baseAppUrl+params.category+'/'+params.subcategory;
-            }else{
-                this.category_slug = params.category;
-                this.category_url = this._global.baseAppUrl+params.category;
-            }
-            
-        });
-        //console.log(this.category_slug);
-        if(this.category_slug){
-        this.service.getCategory(this.category_slug).subscribe(category => {
-          //console.log(category);
-          if (category.status == true) {
-            //console.log('hi');
-            var category_id = category.category_detail.category_id;
-            this.categoryName = category.category_detail.category_name;
-            this.getPostWithCategory(category_id);
-            // get dummy data category_id=category_id&
-            /*this.http.get(this._global.baseAPIUrl +`coding/postdata?category_id=${category_id}&limit=56`)
-                .map((response: Response) => response.json())
-                .subscribe(data => {
-                    // set items to json response
-                    this.allItems = data.post_data;
-                    //console.log(this.allItems);
-                    // initialize to page 1
-                    if(this.allItems){
-                        this.setPage(1);
-                    }
-                    
-                });*/
-
-          } else {
-            this.getPostWithCategory();
-            //console.log(this.contract);
-            
-            /*this.http.get(this._global.baseAPIUrl +'coding/postdata?limit=56')
-                .map((response: Response) => response.json())
-                .subscribe(data => {
-                    // set items to json response
-                    this.allItems = data.post_data;
-
-                    // initialize to page 1
-                    if(this.allItems){
-                        this.setPage(1);
-                    }
-                });*/
-          } 
-        });
-        
-        }else {
-              this.getPostWithCategory();
-          }
-
-        //this.clickPost(2, 'microphone-issue-in-macbook');
         
     }
 
-    ngOnDestroy() {
+   /* ngOnDestroy() {
         this.sub.unsubscribe();
-      }
+      }*/
 
-    /*getBookAuthors(bookId: string) {
-      return this.http.get(`/books/${bookId}`).map(res => res.json())
-            .flatMap((book) => {
-              return Observable.forkJoin(book.authors.map((author) => {
-                return this.http.get(`/authors/${author.id}`).map(res => res.json());
-              })
-            });
-    }*/
-
-    getPostWithCategory(category_id : number = 0) {
+    getPostWithCategory(page : number = 0) {
         var url;
-        //console.log(category_id);
-        if(category_id == 0){
-            url = this._global.baseAPIUrl +'coding/postdata?limit=56';
-        }else{
-            url = this._global.baseAPIUrl +`coding/postdata?category_id=${category_id}&limit=56`;
-        }
+        url = this._global.baseAPIUrl +`coding/all_post?page=${page}`;
         this.http.get(url)
             .map((res: Response) => res.json())
             .flatMap((posts) => {
@@ -149,15 +103,18 @@ export class LatestPostComponent implements OnInit, OnDestroy {
             })
             .subscribe((res) => 
                 {
+                    this.loading = false
                     this.allItems = res;
                     //console.log(this.allItems[0].details.category_detail.category_name)
-                    // initialize to page 1
-                    if(this.allItems){
-                        this.setPage(1);
-                    }
-                });
+                    this.currentPage++;
+                    this.allItems = this.allItems.concat(res);
+                    //this.allNews = this.news[0].user_status;
+                    //this.allNews.push(this.news[0].user_status);
+                    console.log(this.allItems);
+                },
+                ()=>this.loading = false);
             //console.log(this.contract);
-        }
+    }
 
     clickPost(category_id:number, post:string){
         //console.log(this._global.baseAPIUrl +`coding/clickpost?category_id=${category_id}`);
@@ -173,17 +130,6 @@ export class LatestPostComponent implements OnInit, OnDestroy {
             });
     }
 
-    myEvent(event) {
-    console.log(event);
-  }
-
-    getDataFromTwoResources() {
-        // The URLs in this example are dummy
-        let url1 = this.http.get(this._global.baseAPIUrl +`coding/postdata?limit=56`).map(res => res.json());
-        let url2 = this.http.get(this._global.baseAPIUrl +`coding/category`).map(res => res.json());
-        return Observable.forkJoin([url1, url2]);
-    }
-
     setPage(page: number) {
         if (page < 1 || page > this.pager.totalPages) {
             return;
@@ -195,6 +141,8 @@ export class LatestPostComponent implements OnInit, OnDestroy {
         // get current page of items
         this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
+
+    
 
     /*ngOnDestroy() {
     this.category_slug.unsubscribe();

@@ -1,5 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { RouterService } from '../_services/router.service'
+import { RouterService } from '../_services/router.service';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Route, Router, ActivatedRoute } from '@angular/router';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { AppGlobals } from '../app.global.service';
 import { Title, Meta } from '@angular/platform-browser';
 declare var $:any;
@@ -7,17 +10,18 @@ declare var $:any;
 @Component({
   selector: 'app-dashboard',
   //template: '<router-outlet></router-outlet>',
-  templateUrl: './home-layout.component.html',
+  templateUrl: './home-layout.component.html'
 })
 export class HomeLayoutComponent implements OnInit {
 
-  constructor(private title: Title, private meta: Meta, private _elRef : ElementRef, private myBtn: ElementRef, private _global: AppGlobals, private routerservice : RouterService) { }
+  constructor(private router: Router, private location : Location, private http : Http, private title: Title, private meta: Meta, private _elRef : ElementRef, private myBtn: ElementRef, private _global: AppGlobals, private routerservice : RouterService) { }
 
   // array of all items to be paged
-  private allCategories: any[];
-  private allSubCategories: any[];
-  private allRandomData: any[];
-  private baseUrl : String;
+  allCategories: any[];
+  allSubCategories: any[];
+  allRandomData: any[];
+  baseUrl : String;
+  private post_url : any;
   private isActive : number = 1;
 
   metatitle: string;
@@ -38,10 +42,13 @@ export class HomeLayoutComponent implements OnInit {
   nextNotes(val) {
     //var owl = $(this._elRef.nativeElement).find('#btn');
     //console.log(owl);
-    
+    let res : any = '';
     this._elRef.nativeElement.addEventListener('click', (event) => {
       var className = $(event.target).attr('data-tab');
-      var res = className.split("-",);
+      if(className) {
+        res = className.split("-");
+      }
+      
       this.isActive = res[1];
       //alert(this.isActive);
       //console.log(className);
@@ -65,6 +72,21 @@ export class HomeLayoutComponent implements OnInit {
       
     });
   }
+
+  clickPost(category_id:number, post:string){
+        //console.log(this._global.baseAPIUrl +`coding/clickpost?category_id=${category_id}`);
+        this.http.get(this._global.baseAPIUrl +`coding/clickpost?category_id=${category_id}`)
+            .map((response: Response) => response.json())
+            .subscribe(data => {
+                
+                // set items to json response
+                this.post_url = data.post_url+'/post/'+post;
+                //console.log(data);
+                this.location.replaceState('/'); /*relativeTo: this.route,*/ 
+                this.router.navigate([this.post_url], {replaceUrl:true});
+                //this.router.navigate(['/', data.post_url, 'post', post], {relativeTo: this.route});
+            });
+    }
 
   showMenu() {
     this.routerservice.getCategories().subscribe(category => {

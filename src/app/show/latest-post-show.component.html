@@ -1,11 +1,14 @@
 <!--Content Side-->
-    <div *ngIf="loading" class="preloader"></div>
+    <!-- <div *ngIf="loading" class="preloader"></div> -->
+
                 <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <img *ngIf="loading" style="display: block;margin-left: auto;margin-right: auto;" src="assets/images/fancybox/fancybox_loading.gif">
                     <!--Latest News-->
-                    <div class="latest-news-section">
+                    <div class="latest-news-section" *ngIf="!loading" >
                         <!--Sec Title-->
                         <div class="sec-title">
                             <h2>Latest Post <span *ngIf="categoryName" > of {{categoryName}}</span></h2>
+                            
                         </div>
                         <div class="row clearfix">
                             
@@ -14,14 +17,14 @@
                                 
                                 <div class="inner-box">
                                     <div class="image" *ngIf="item.image_path != ''; else templateName">
-                                        <a href="{{category_url}}/post/{{item.page_name}}"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="http://www.codingprogrammer.com/admin/upload/{{item.image_path}}" alt="{{item.image_alt}}" /></a>
-                                        <div class="category"><a href="{{post_url}}">{{item.details.category_detail.category_name}}</a></div>
+                                        <a (click)="clickPost( item.category_id, item.page_name)"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="http://www.codingprogrammer.com/admin/upload/{{item.image_path}}" alt="{{item.image_alt}}" /></a>
+                                        <div class="category"><a (click)="clickPost( item.category_id, item.page_name)" >{{item.details.category_detail.category_name}}</a></div>
                                     </div>
                                      
                                     <ng-template #templateName>
                                     <div class="image">
-                                        <a href="{{category_url}}/post/{{item.page_name}}"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-5.jpg" alt="{{item.page_name}}" /></a>
-                                        <div class="category"><a href="{{post_url}}">{{item.details.category_detail.category_name}}</a></div>
+                                        <a (click)="clickPost( item.category_id, item.page_name)"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-5.jpg" alt="{{item.page_name}}" /></a>
+                                        <div class="category"><a (click)="clickPost( item.category_id, item.page_name)" >{{item.details.category_detail.category_name}}</a></div>
                                     </div>
                                     </ng-template>
 

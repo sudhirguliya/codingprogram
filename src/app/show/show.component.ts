@@ -22,7 +22,7 @@ export class ShowComponent implements OnInit {
     //private baseUrl : String;
     private category_url: any;
     private post_url : any;
-    private category_slug: string;
+    category_slug: string;
     private categoryName : any;
     private sub : any;
 

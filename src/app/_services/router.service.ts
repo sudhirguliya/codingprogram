@@ -14,11 +14,33 @@ import 'rxjs/add/operator/toPromise';
 export class RouterService {
     constructor(private http: Http, private _global: AppGlobals) { }
 
-getCategories() {
+    getLatestPost(page: number = 1) {
+        return this.http.get(this._global.baseAPIUrl +`coding/all_post?page=${page}`)
+        .map((res: Response) => res.json())
+            .flatMap((posts) => {
+                //console.log(posts.post_data);
+                if (posts.post_data.length > 0) {
+                    return Observable.forkJoin(
+                      posts.post_data.map((cat: any) => {
+                          //console.log(cat.category_id);
+                        return this.http.get(this._global.baseAPIUrl +`coding/category?category_id=${cat.category_id}`)
+                          .map((res: any) => {
+                            let details: any = res.json();
+                            cat.details = details;
+                            return cat;
+                          });
+                      })
+                    );
+                    
+                  }
+            });
+    }
+
+    getCategories() {
         return this.http.get(this._global.baseAPIUrl +'coding/categories').map((res) => res.json());
     }
-getCategory(category: Category) {
-    var obj = { category_link: category };
+    getCategory(category: Category) {
+        var obj = { category_link: category };
 
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
         let options = new RequestOptions( {method: RequestMethod.Post, headers: headers });
@@ -28,8 +50,8 @@ getCategory(category: Category) {
         return this.http.post(this._global.baseAPIUrl +'coding/category',   body, options).map((res) => res.json());
     }
 
-getPost(category: Category, post : string) {
-    var obj = { category_link: category, post : post };
+    getPost(category: Category, post : string) {
+        var obj = { category_link: category, post : post };
 
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
         let options = new RequestOptions( {method: RequestMethod.Post, headers: headers });

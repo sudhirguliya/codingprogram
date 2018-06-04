@@ -84,6 +84,7 @@ const appRoutes: Routes = [
   { path: '**',  component: NotFoundComponent },
 ];
 
+/*enableTracing: true,*/
 export const routing = RouterModule.forRoot(appRoutes, {
-      useHash: false, enableTracing: true, preloadingStrategy: PreloadAllModules
+      useHash: false,  preloadingStrategy: PreloadAllModules
     });

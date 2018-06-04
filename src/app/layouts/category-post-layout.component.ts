@@ -13,9 +13,9 @@ export class CategoryPostLayoutComponent implements OnInit {
   constructor(private _global: AppGlobals, private routerservice : RouterService) { }
 
   // array of all items to be paged
-  private allCategories: any[];
-  private allSubCategories: any[];
-  private baseUrl : String;
+  allCategories: any[];
+  allSubCategories: any[];
+  baseUrl : String;
 
   ngOnInit(): void {
     this.showMenu();

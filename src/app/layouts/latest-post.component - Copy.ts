@@ -1,5 +1,4 @@
-//import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
-import { Component, Input, OnInit, OnChanges, SimpleChanges, ChangeDetectionStrategy, ElementRef} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -15,16 +14,13 @@ import * as _ from 'underscore';
 import { PagerService } from '../_services/pager.service';
 
 @Component({
-  moduleId: module.id,
-  selector: 'latest-post-show',
+  selector: 'latest-post',
   //template : 'test menu'
-  templateUrl: './latest-post-show.component.html',
-  //changeDetection: ChangeDetectionStrategy.OnPush,
-  inputs: ['options']
+  templateUrl: './latest-post.component.html'
 })
 
-export class LatestPostShowComponent {
-    @Input() options: any;
+export class LatestPostComponent implements OnInit, OnDestroy {
+
     constructor(private http:Http,  private pagerService: PagerService, private _global: AppGlobals, private router: Router, private route: ActivatedRoute, private location: Location, private service: RouterService,) {
 
     }
@@ -32,6 +28,7 @@ export class LatestPostShowComponent {
     // array of all items to be paged
     private allItems: any[];
     private catShow : any[];
+    private sub : any;
     loading = false;
     // pager object
     pager: any = {};
@@ -45,26 +42,13 @@ export class LatestPostShowComponent {
     private category_slug: any;
     categoryName : any;
     private contract : any[];
-    private sub :any;
 
-    /*ngOnChanges(...args: any[]) {
-        console.log('onChange fired');
-        console.log('changing', args);
-    }*/
+    homeworld: Observable<{}>;
+
     ngOnInit() {
-      this.loading = true;
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
-      //console.log(changes);
-      if (changes['options']) {
-          this.category_slug = this.options;
-          //console.log('And '+ this.category_slug +' is '+ typeof(this.category_slug));
-        
-        //this.allMsgChangeLogs.push(changeLog);
-
+        this.loading = true;
         //this.category_url = this.route.params['category'];
-        /*this.sub = this.route.params.subscribe(params => {
+        this.sub = this.route.params.subscribe(params => {
             console.log(params);
             if (params.subcategory) {
                 this.category_slug = params.subcategory;
@@ -74,7 +58,7 @@ export class LatestPostShowComponent {
                 this.category_url = this._global.baseAppUrl+params.category;
             }
             
-        });*/
+        });
         //console.log(this.category_slug);
         if(this.category_slug){
         this.service.getCategory(this.category_slug).subscribe(category => {
@@ -83,7 +67,6 @@ export class LatestPostShowComponent {
             //console.log('hi');
             var category_id = category.category_detail.category_id;
             this.categoryName = category.category_detail.category_name;
-            //console.log(this.categoryName);
             this.getPostWithCategory(category_id);
             // get dummy data category_id=category_id&
             /*this.http.get(this._global.baseAPIUrl +`coding/postdata?category_id=${category_id}&limit=56`)
@@ -121,15 +104,13 @@ export class LatestPostShowComponent {
               this.getPostWithCategory();
           }
 
-       } // end if condition of change option
-
         //this.clickPost(2, 'microphone-issue-in-macbook');
         
     }
 
-    /*ngOnDestroy() {
+    ngOnDestroy() {
         this.sub.unsubscribe();
-      }*/
+      }
 
     /*getBookAuthors(bookId: string) {
       return this.http.get(`/books/${bookId}`).map(res => res.json())
@@ -169,9 +150,8 @@ export class LatestPostShowComponent {
             })
             .subscribe((res) => 
                 {
+                    this.loading = false
                     this.allItems = res;
-                    this.loading = false;
-                    //console.log(res);
                     //console.log(this.allItems[0].details.category_detail.category_name)
                     // initialize to page 1
                     if(this.allItems){
@@ -190,10 +170,9 @@ export class LatestPostShowComponent {
                 
                 // set items to json response
                 this.post_url = data.post_url+'/post/'+post;
-                console.log(data);
-                this.location.replaceState('/'); /*relativeTo: this.route,*/ 
+                //console.log(this.post_url);
+                this.location.replaceState('/'); 
                 this.router.navigate([this.post_url], {replaceUrl:true});
-                //this.router.navigate(['/', data.post_url, 'post', post], {relativeTo: this.route});
             });
     }
 

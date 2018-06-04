@@ -11,6 +11,8 @@ import * as $ from 'jquery';
 //Routing
 import { routing } from './app.routes';
 //import { Route, Routes , Router, RouterModule } from '@angular/router';
+//directive
+import { InfiniteScrollerDirective } from './directive/infinite-scroller.directive';
 //Service
 import { AppGlobals } from './app.global.service';
 import { RouterService } from './_services/router.service';
@@ -49,7 +51,8 @@ import { RemoveHtmlPipe } from './pipes/remove-html.pipe';
 @NgModule({
   declarations: [
     AppComponent, HomeLayoutComponent, NotFoundComponent, LatestPostComponent, CategoryPostLayoutComponent, PostDetailsLayoutComponent,
-    TruncatePipe, EscapeHtmlPipe, RemoveHtmlPipe
+    TruncatePipe, EscapeHtmlPipe, RemoveHtmlPipe,
+    InfiniteScrollerDirective
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, RouterModule,
