@@ -22,10 +22,7 @@
                                     </div>
                                      
                                     <ng-template #templateName>
-                                    <div class="image">
-                                        <a (click)="clickPost( item.category_id, item.page_name)"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-5.jpg" alt="{{item.page_name}}" /></a>
-                                        <div class="category"><a (click)="clickPost( item.category_id, item.page_name)" >{{item.details.category_detail.category_name}}</a></div>
-                                    </div>
+                                        <image-show [cpImage]="item"></image-show>
                                     </ng-template>
 
                                     <!-- href="{{category_url}}/post/{{item.page_name}}" -->

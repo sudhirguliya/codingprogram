@@ -5,6 +5,6 @@ export class AppGlobals {
 
   constructor() { }
 
-  readonly baseAppUrl: string = 'http://localhost:4000';
+  readonly baseAppUrl: string = 'http://www.codingprogrammer.com/cp/';
   readonly baseAPIUrl: string = 'http://www.codingprogrammer.com/api/';
 }
