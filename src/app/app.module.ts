@@ -27,6 +27,8 @@ import { CategoryPostLayoutComponent } from './layouts/category-post-layout.comp
 import { PostDetailsLayoutComponent } from './layouts/post-details-layout.component';
 
 //Component
+import { CountCategoryComponent } from './layouts/count-category.component';
+import { CpImageComponent } from './layouts/cp-image.component';
 import { LatestPostComponent } from './layouts/latest-post.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -50,9 +52,9 @@ import { RemoveHtmlPipe } from './pipes/remove-html.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent, HomeLayoutComponent, NotFoundComponent, LatestPostComponent, CategoryPostLayoutComponent, PostDetailsLayoutComponent,
+    AppComponent, HomeLayoutComponent, NotFoundComponent, LatestPostComponent, CategoryPostLayoutComponent, PostDetailsLayoutComponent, CountCategoryComponent,
     TruncatePipe, EscapeHtmlPipe, RemoveHtmlPipe,
-    InfiniteScrollerDirective
+    InfiniteScrollerDirective, CpImageComponent
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, RouterModule,

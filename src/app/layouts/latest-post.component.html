@@ -1,12 +1,13 @@
 <!--Content Side-->
                 <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <img *ngIf="loading" style="display: block;margin-left: auto;margin-right: auto;" src="assets/images/fancybox/fancybox_loading.gif">
-                    <!--Latest News-->
-                    <div class="contain" appInfiniteScroller scrollPerecnt="70" immediateCallback="true" [scrollCallback]="scrollCallback">
-                        <!--Sec Title-->
+                    <!--Sec Title-->
                         <div class="sec-title">
                             <h2>Latest Post <span *ngIf="categoryName" > of {{categoryName}}</span></h2>
                         </div>
+                    <!--Latest News-->
+                    <div class="contain" appInfiniteScroller scrollPerecnt="70" immediateCallback="true" [scrollCallback]="scrollCallback">
+                        
                         <div class="row clearfix post_infinite">
                            
                             <!--News Block Two-->
@@ -19,10 +20,7 @@
                                     </div>
                                      
                                     <ng-template #templateName>
-                                    <div class="image">
-                                        <a (click)="clickPost( item.category_id, item.page_name)"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="assets/images/resource/news-5.jpg" alt="{{item.page_name}}" /></a>
-                                        <div class="category"><a (click)="clickPost( item.category_id, item.page_name)">{{item.details.category_detail.category_name}}</a></div>
-                                    </div>
+                                        <image-show [cpImage]="item"></image-show>
                                     </ng-template>
 
                                     <!-- href="{{category_url}}/post/{{item.page_name}}" -->

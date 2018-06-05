@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { PostRoutingModule } from './post-routing.module';
 
 import { RouterModule } from '@angular/router';
-
+import { CountCategoryShowComponent } from './count-category-show.component'
 import { PostComponent } from './post.component';
 import { PostHtmlPipe } from './post-html.pipe';
 
@@ -18,6 +18,6 @@ import { PostHtmlPipe } from './post-html.pipe';
     PostRoutingModule,
     RouterModule
   ],
-  declarations: [ PostComponent, PostHtmlPipe],
+  declarations: [ PostComponent, PostHtmlPipe, CountCategoryShowComponent],
 })
 export class PostModule { }

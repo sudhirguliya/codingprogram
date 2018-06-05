@@ -37,6 +37,10 @@ export class RouterService {
             });
     }
 
+    getCountCategories() {
+        return this.http.get(this._global.baseAPIUrl +'coding/count_with_category').map((res) => res.json());
+    }
+
     getCategories() {
         return this.http.get(this._global.baseAPIUrl +'coding/categories').map((res) => res.json());
     }

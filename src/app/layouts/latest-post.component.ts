@@ -53,11 +53,11 @@ export class LatestPostComponent implements OnInit {
     homeworld: Observable<{}>;
 
     constructor(private http:Http,  private pagerService: PagerService, private _global: AppGlobals, private router: Router, private route: ActivatedRoute, private location: Location, private service: RouterService,) {
-         this.scrollCallback = this.getStories.bind(this);
+         this.scrollCallback = this.getPosts.bind(this);
 
     }
 
-    getStories() {
+    getPosts() {
         return this.service.getLatestPost(this.currentPage).do(this.processData);
     }
 
