@@ -15,6 +15,7 @@ export class RouterService {
     constructor(private http: Http, private _global: AppGlobals) { }
 
     getLatestPost(page: number = 1) {
+        //console.log('Page no '+page);
         return this.http.get(this._global.baseAPIUrl +`coding/all_post?page=${page}`)
         .map((res: Response) => res.json())
             .flatMap((posts) => {

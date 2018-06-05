@@ -2,7 +2,7 @@
                 <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <img *ngIf="loading" style="display: block;margin-left: auto;margin-right: auto;" src="assets/images/fancybox/fancybox_loading.gif">
                     <!--Latest News-->
-                    <div class="latest-news-section" appInfiniteScroller scrollPerecnt="70" immediateCallback="true" [scrollCallback]="scrollCallback">
+                    <div class="contain" appInfiniteScroller scrollPerecnt="70" immediateCallback="true" [scrollCallback]="scrollCallback">
                         <!--Sec Title-->
                         <div class="sec-title">
                             <h2>Latest Post <span *ngIf="categoryName" > of {{categoryName}}</span></h2>

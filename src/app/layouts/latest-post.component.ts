@@ -17,8 +17,8 @@ import { PagerService } from '../_services/pager.service';
   selector: 'latest-post',
   //template : 'test menu'
   templateUrl: './latest-post.component.html',
-  styles : [`.post_infinite{
-  height: 400px;
+  styles : [`.contain{
+  height: 1150px;
   weight: auto;
   overflow : scroll;
 }`]
@@ -63,11 +63,11 @@ export class LatestPostComponent implements OnInit {
 
     private processData = (news) => {
         //console.log(news);
-        //this.currentPage++;
+        this.currentPage++;
         this.news = this.news.concat(news);
         //this.allNews = this.news[0].user_status;
         //this.allNews.push(this.news[0].post_data);
-        console.log(this.news);
+        //console.log(this.news);
         //console.log(news.json().user_status);
       }
 
