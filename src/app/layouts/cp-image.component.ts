@@ -19,7 +19,7 @@ import { PagerService } from '../_services/pager.service';
   //template : 'test menu'
   template: `<div class="image">
                 <a (click)="clickPost( cpImage.category_id, cpImage.page_name)"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="{{this.src}}" alt="{{cpImage.page_name}}" /></a>
-                <div class="category"><a (click)="clickPost( cpImage.category_id, cpImage.page_name)">{{cpImage.details.category_detail.category_name}}</a></div>
+                <div class="category"><a [routerLink]="this.subcategory ? ['/', this.category, this.subcategory, 'post', cpImage.page_name] : ['/', this.category, 'post', cpImage.page_name]">{{cpImage.details.category_detail.category_name}}</a></div>
             </div>`,
   //changeDetection: ChangeDetectionStrategy.OnPush,
   inputs: ['cpImage']
@@ -29,8 +29,10 @@ export class CpImageComponent {
 	constructor(private http:Http, private pagerService: PagerService, private _global: AppGlobals, private router: Router, private route: ActivatedRoute, private location: Location, private service: RouterService,) {
 
     }
-	src : any;
-  private post_url : any;
+	src : string;
+  private post_url : string;
+  private category : string;
+  private subcategory : string;
 
 	@Input() cpImage: any;
 	
@@ -43,7 +45,25 @@ export class CpImageComponent {
          this.src = regex.exec(str)[1];
          //console.log(this.src);
         // this.renderer.setElementStyle(this.el.nativeElement, 'display', 'none');
-        // this.viewContainer.createEmbeddedView(src);   
+        // this.viewContainer.createEmbeddedView(src); 
+
+        this.http.get(this._global.baseAPIUrl +`coding/clickpost?category_id=${this.cpImage.category_id}`)
+            .map((response: Response) => response.json())
+            .subscribe(data => {
+                console.log(data.post_url);
+                // set items to json response
+                if(data.post_url.subcategory){
+                  this.category = data.post_url.category;
+                  this.subcategory = data.post_url.subcategory;
+                }else{
+                  this.category = data.post_url.category;
+                  this.subcategory = '';
+                }
+                
+                //console.log(this.post_url);
+                //this.location.replaceState('/'); 
+                //this.router.navigate([this.post_url], {replaceUrl:true});
+            });  
 	  }
 
   clickPost(category_id:number, post:string){

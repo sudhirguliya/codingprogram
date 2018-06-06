@@ -6,7 +6,7 @@ import { ShowRoutingModule } from './show-routing.module';
 import { LatestPostShowComponent } from './latest-post-show.component';
 import { RouterModule } from '@angular/router';
 //import { LatestPostComponent } from '../layouts/latest-post.component';
-import { CpImageShowComponent } from './cp-image-show.component'
+import { CpImageShowComponent } from './cp-image-show.component';
 import { ShowComponent } from './show.component';
 import { PostHtmlPipe } from './show-html.pipe';
 import { RemoveHtmlPipe } from './remove-html.pipe';
