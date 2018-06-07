@@ -14,28 +14,9 @@
                             <div class="news-block-two with-margin col-md-6 col-sm-6 col-xs-12" *ngFor="let item of news">
                                 <!-- {{item | json}} -->
                                 <div class="inner-box">
-                                    <div class="image" *ngIf="item.image_path != ''; else templateName">
-                                        <a (click)="clickPost( item.category_id, item.page_name)"><img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="http://www.codingprogrammer.com/admin/upload/{{item.image_path}}" alt="{{item.image_alt}}" /></a>
-                                        <div class="category"><a  (click)="clickPost( item.category_id, item.page_name)">{{item.details.category_detail.category_name}}</a></div>
-                                    </div>
-                                     
-                                    <ng-template #templateName>
-                                        <image-show [cpImage]="item"></image-show>
-                                    </ng-template>
-
-                                    <!-- href="{{category_url}}/post/{{item.page_name}}" -->
-                                    <div class="lower-box">
-                                        <h3><a (click)="clickPost( item.category_id, item.page_name)">{{item.page_title | truncate : 64 : true }}</a></h3>
-                                        <!-- <ul class="post-meta">
-                                            <li><span class="icon fa fa-clock-o"></span>March 01, 2016</li>
-                                            <li><span class="icon fa fa-comment-o"></span>7</li>
-                                            <li><span class="icon fa fa-eye"></span>2740</li>
-                                        </ul> -->
-                                        <!-- [innerText]="item.page_description " -->
-                                        <!-- [innerHTML]="item.page_description | keepHtml" --> 
-                                        <div class="text" >{{item.page_description | removeHtml | truncate : 200 : true}}
-                                        </div>
-                                    </div>
+                                    <image-show [cpImage]="item"></image-show>
+                                    
+                                    
                                 </div>
                             </div>
                             
