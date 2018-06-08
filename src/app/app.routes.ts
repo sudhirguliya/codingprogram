@@ -34,6 +34,9 @@ const appRoutes: Routes = [
     resolve: {
           category: CategoryResolve
     },
+    data: {
+        breadcrumb: 'category'
+    },
     children: [
       {
         path: '',
@@ -44,6 +47,9 @@ const appRoutes: Routes = [
         loadChildren: './post/post.module#PostModule',
         resolve: {
           post: PostResolve
+        },
+        data: {
+          breadcrumb: 'post'
         },
       }
     ]

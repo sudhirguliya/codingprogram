@@ -11,9 +11,10 @@
                                 <div class="upper-box">
                                     <ul class="breadcrumb-bar">
                                         <breadcrumbs></breadcrumbs>
-                                        <li><a href="#">Home</a></li>
+
+                                        <!-- <li><a href="#">Home</a></li>
                                         <li>Featured</li>
-                                        <li>Movies: Midnight Special delivers a new short trailer</li>
+                                        <li>Movies: Midnight Special delivers a new short trailer</li> -->
                                     </ul>
                                     <ul class="tag-title">
                                         <li>Featured</li>
@@ -73,104 +74,24 @@
                                 <div class="sec-title">
                                     <h2>Related Articles</h2>
                                 </div>
-                                <div class="related-item-carousel owl-carousel owl-theme">
-                                    
-                                    <!--News Block Two-->
-                                    <div class="news-block-two small-block">
+                                <div class="related-item-carousel owl-theme">
+                                    <owl-carousel [options]="sliderOptions" [items]="allItems" [carouselClasses]="['owl-theme','offer_box','mainSlider1', 'row', 'sliding']">
+                                     <!--News Block Two-->
+                                     <div class="news-block-two small-block" *ngFor="let item of allItems;let i = index">
                                         <div class="inner-box">
                                             <div class="image">
                                                 <a href="#"><img src="assets/images/resource/news-40.jpg" alt="" /></a>
-                                                <div class="category"><a href="#">Travel</a></div>
+                                                <div class="category"><a href="#">{{item.details.category_detail.category_name}}</a></div>
                                             </div>
                                             <div class="lower-box">
-                                                <h3><a href="#">Elon Musk's Hyperloop vision races toward first public test</a></h3>
-                                                <ul class="post-meta">
+                                                <h3><a href="#"> {{item.page_title}} </a></h3>
+                                                <!-- <ul class="post-meta">
                                                     <li><span class="icon fa fa-clock-o"></span>April 03, 2016</li>
-                                                </ul>
+                                                </ul> -->
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <!--News Block Two-->
-                                    <div class="news-block-two small-block">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <a href="#"><img src="assets/images/resource/news-41.jpg" alt="" /></a>
-                                                <div class="category"><a href="#">Sports</a></div>
-                                            </div>
-                                            <div class="lower-box">
-                                                <h3><a href="#">A modern day security strategy for your computer </a></h3>
-                                                <ul class="post-meta">
-                                                    <li><span class="icon fa fa-clock-o"></span>April 04, 2016</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!--News Block Two-->
-                                    <div class="news-block-two small-block">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <a href="#"><img src="assets/images/resource/news-42.jpg" alt="" /></a>
-                                                <div class="category">photo</div>
-                                            </div>
-                                            <div class="lower-box">
-                                                <h3><a href="#">Fix an Exchange Rate now with a New Business App</a></h3>
-                                                <ul class="post-meta">
-                                                    <li><span class="icon fa fa-clock-o"></span>April 04, 2016</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!--News Block Two-->
-                                    <div class="news-block-two small-block">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <a href="#"><img src="assets/images/resource/news-40.jpg" alt="" /></a>
-                                                <div class="category"><a href="#">Travel</a></div>
-                                            </div>
-                                            <div class="lower-box">
-                                                <h3><a href="#">Elon Musk's Hyperloop vision races toward first public test</a></h3>
-                                                <ul class="post-meta">
-                                                    <li><span class="icon fa fa-clock-o"></span>April 03, 2016</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!--News Block Two-->
-                                    <div class="news-block-two small-block">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <a href="#"><img src="assets/images/resource/news-41.jpg" alt="" /></a>
-                                                <div class="category"><a href="#">Sports</a></div>
-                                            </div>
-                                            <div class="lower-box">
-                                                <h3><a href="#">A modern day security strategy for your computer </a></h3>
-                                                <ul class="post-meta">
-                                                    <li><span class="icon fa fa-clock-o"></span>April 04, 2016</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!--News Block Two-->
-                                    <div class="news-block-two small-block">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <a href="#"><img src="assets/images/resource/news-42.jpg" alt="" /></a>
-                                                <div class="category">photo</div>
-                                            </div>
-                                            <div class="lower-box">
-                                                <h3><a href="#">Fix an Exchange Rate now with a New Business App</a></h3>
-                                                <ul class="post-meta">
-                                                    <li><span class="icon fa fa-clock-o"></span>April 04, 2016</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
+                                 </owl-carousel>
                                 </div>
                             </div>
                             

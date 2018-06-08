@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions, Response  } from '@angular/http';
 import { Title, Meta } from '@angular/platform-browser';
 import { RouterService } from '../_services/router.service';
 import { AppGlobals } from '../app.global.service';
@@ -22,10 +22,13 @@ export class PostComponent implements OnInit {
     baseUrl : String;
 
     private blogpostId: number;
+    private categoryId: number;
     metatitle: string;
     description: string;
     keyboards: string;
 
+    allItems : any;
+    sliderOptions : any;
     constructor(private title: Title, private meta: Meta, private route: ActivatedRoute, private router: Router, private http: Http, private service: RouterService, private _global: AppGlobals ) {
 
        
@@ -56,16 +59,22 @@ export class PostComponent implements OnInit {
  
     ngOnInit() {
       this.showMenu();
+
+
+
+      //this.getPostWithCategory();
+      this.sliderOptions = { margin: 5, dots: false, navigation: true, nav: true, navText: [ '<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>' ], autoplay: true, loop: true, autoplayTimeout: 2000, autoplayHoverPause: true, lazyLoad: true, responsive:{ 0:{ items: 1 }, 600:{ items: 2 }, 960:{ items: 3 }, 1200:{ items: 3 } } };
       this.baseUrl = this._global.baseAppUrl; 
 
       this.route.params.pipe(
         switchMap(
           (params: Params) => 
            this.service.postDetails(params['post'])))
-
         .subscribe(postdetails => {
+          //console.log(postdetails),
           this.postdesc = postdetails.post_detail;
           this.blogpostId = postdetails.post_detail.id;
+          this.categoryId = postdetails.post_detail.category_id;
           //console.log(this.blogpostId) 
           this.service.getMetaPost(this.blogpostId)
             .subscribe(item => {
@@ -81,9 +90,45 @@ export class PostComponent implements OnInit {
                   }
                   
               })
+            // Show for related article
+            this.getPostWithCategory(this.categoryId);
         });
 
     }
+
+  getPostWithCategory(category_id : number = 0) {
+        var url;
+        //console.log(category_id);
+        if(category_id == 0){
+            url = this._global.baseAPIUrl +'coding/postdata?limit=56';
+        }else{
+            url = this._global.baseAPIUrl +`coding/postdata?category_id=${category_id}&limit=56`;
+        }
+        this.http.get(url)
+            .map((res: Response) => res.json())
+            .flatMap((posts) => {
+                //console.log(posts.post_data);
+                if (posts.post_data.length > 0) {
+                    return Observable.forkJoin(
+                      posts.post_data.map((cat: any) => {
+                          //console.log(cat.category_id);
+                        return this.http.get(this._global.baseAPIUrl +`coding/category?category_id=${cat.category_id}`)
+                          .map((res: any) => {
+                            let details: any = res.json();
+                            cat.details = details;
+                            return cat;
+                          });
+                      })
+                    );
+                    
+                  }
+            })
+            .subscribe((res) => 
+                {
+                    this.allItems = res;
+                   //console.log(this.allItems);
+                }); 
+        }
 
   showMenu() {
     this.service.getCategories().subscribe(category => {

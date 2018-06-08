@@ -10,7 +10,8 @@ const routes: Routes = [
     path: '',
     component: PostComponent,
     data: {
-      title: 'Post Details'
+      title: 'Post Details',
+      breadcrumbs: 'Repo List'
     },
     resolve: {
         post: PostResolve

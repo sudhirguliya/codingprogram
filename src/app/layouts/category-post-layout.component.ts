@@ -251,8 +251,9 @@ export class CategoryPostLayoutComponent implements OnInit {
     
     
     //Three Item Carousel
-    if ($('.related-item-carousel').length) {
-      $('.related-item-carousel').owlCarousel({
+    //if ($('.related-item-carousel').length) {
+      //alert(1);
+      /*$('.related-item-carousel').owlCarousel({
         loop:true,
         margin:30,
         nav:true,
@@ -279,8 +280,8 @@ export class CategoryPostLayoutComponent implements OnInit {
             items:3
           }
         }
-      });        
-    }
+      }); */       
+    //}
     
     //Three Item Carousel
     if ($('.main-three-item-carousel').length) {
