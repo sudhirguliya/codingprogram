@@ -21,6 +21,9 @@ export class HomeLayoutComponent implements OnInit {
   allSubCategories: any[];
   allRandomData: any[];
   baseUrl : String;
+  arr1 : any[];
+  arr2 : any[];
+  arr3 : any[];
   private post_url : any;
   private isActive : number = 1;
 
@@ -109,11 +112,16 @@ export class HomeLayoutComponent implements OnInit {
   showRandomPost(){
     this.routerservice.postRandom().subscribe(randomdata => {
       //console.log(randomdata);
-      if (randomdata.status == true) {
+      if (randomdata) {
         //console.log('hi');
-        this.allRandomData = randomdata.post_data;
+        this.allRandomData = randomdata;
+        var chunkify = this.chunkify(this.allRandomData, 3, true);
+
+        this.arr1 = chunkify[0];
+        this.arr2 = chunkify[1];
+        this.arr3 = chunkify[2];
         //this.allSubCategories = category.allCategories.subcategory;
-        //console.log(this.allCategories);
+        //console.log(pp);
       } else {
         //console.log('bye menu');
         //this.location.replaceState('/'); // clears browser history so they can't navigate with back button
@@ -123,6 +131,47 @@ export class HomeLayoutComponent implements OnInit {
       }
     });
   }
+
+  chunkify(a, n, balanced) {
+    
+    if (n < 2)
+        return [a];
+
+    var len = a.length,
+            out = [],
+            i = 0,
+            size;
+
+    if (len % n === 0) {
+        size = Math.floor(len / n);
+        while (i < len) {
+            out.push(a.slice(i, i += size));
+        }
+    }
+
+    else if (balanced) {
+        while (i < len) {
+            size = Math.ceil((len - i) / n--);
+            out.push(a.slice(i, i += size));
+        }
+    }
+
+    else {
+
+        n--;
+        size = Math.floor(len / n);
+        if (len % size === 0)
+            size--;
+        while (i < size * n) {
+            out.push(a.slice(i, i += size));
+        }
+        out.push(a.slice(size * n));
+
+    }
+
+    return out;
+  }
+
 
   ngAfterViewInit() {
 

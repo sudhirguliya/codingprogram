@@ -2,16 +2,16 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges, ChangeDetectionStra
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { AppGlobals } from '../app.global.service';
-import { RouterService } from '../_services/router.service';
+import { AppGlobals } from '../../app.global.service';
+import { RouterService } from '../../_services/router.service';
 import { Observable } from 'rxjs/Observable';
 import { mergeMap } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/mergeMap';
 
-import * as _ from 'underscore';
-import { PagerService } from '../_services/pager.service';
+//import * as _ from 'underscore';
+import { PagerService } from '../../_services/pager.service';
 
 @Component({
   moduleId: module.id,
@@ -34,7 +34,7 @@ export class CountCategoryComponent {
 	
 	ngOnInit() {
 	  this.service.getCountCategories().subscribe(countcategory => {
-      //console.log(countcategory);
+      console.log(countcategory);
       if (countcategory.status == true) {
         //console.log('hi');
         this.allCountCategories = countcategory.category_count;

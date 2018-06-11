@@ -243,20 +243,7 @@
                     <!--News Block Three-->
                     <div class="news-block-three style-two">
                         <div class="inner-box">
-                            <div class="image">
-                                <img class="wow fadeIn" data-wow-delay="0ms" data-wow-duration="2500ms" src="http://www.codingprogrammer.com/admin/upload/{{randompost.image_path}}" alt="{{randompost.image_alt}}" />
-                                <div class="overlay-box">
-                                    <div class="content">
-                                        <!-- <div class="tag"><a href="blog-single-2.html">Travel</a></div> -->
-                                        <h3><a (click)="clickPost( randompost.category_id, randompost.page_name)" >{{randompost.page_title}}</a></h3>
-                                        <!-- <ul class="post-meta">
-                                            <li><span class="icon qb-clock"></span>March 17, 2016</li>
-                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                            <li><span class="icon qb-eye"></span>2470</li>
-                                        </ul> -->
-                                    </div>
-                                </div>
-                            </div>
+                            <image-tab-show [cpImage]="randompost"></image-tab-show>
                         </div>
                     </div>
                     
@@ -371,22 +358,35 @@
     <section class="blog-gallery grey-bg">
     	<div class="auto-container">
         	<div class="row clearfix">
-            	
-                <div class="column pull-left col-md-3 col-sm-6 col-xs-12" *ngFor="let blog of allRandomData; let i = index" >
+
+                <div class="column pull-left col-md-3 col-sm-6 col-xs-12">
                 	
-                    {{i}}
+                   <!--News Block Two-->
+                    <div class="news-block-two small-block" *ngFor="let blog of arr1" >
+                        <div class="inner-box">
+                            <image-show [cpImage]="blog"></image-show>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="column pull-right col-md-3 col-sm-6 col-xs-12">
-                	test
+                	<!--News Block Two-->
+                    <div class="news-block-two small-block"  *ngFor="let blog of arr2">
+                        <div class="inner-box">
+                            <image-show [cpImage]="blog"></image-show>
+                        </div>
+                    </div>
                     
                 </div>
                 <div class="column col-md-6 col-sm-12 col-xs-12">
-                	
-                    again
+                    <!--News Block Seven-->
+                    <div class="news-block-seven style-two"  *ngFor="let blog of arr3">
+                        <div class="inner-box">
+                           <image-show [cpImage]="blog"></image-show>
+                        </div>
+                    </div>
                     
                 </div>
-                
             </div>
         </div>
     </section>

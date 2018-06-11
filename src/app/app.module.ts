@@ -27,8 +27,9 @@ import { CategoryPostLayoutComponent } from './layouts/category-post-layout.comp
 import { PostDetailsLayoutComponent } from './layouts/post-details-layout.component';
 
 //Component
-import { CountCategoryComponent } from './layouts/count-category.component';
+import { CountCategoryModule } from './directive/side_category/count-category.module';
 import { CpImageComponent } from './layouts/cp-image.component';
+import { CpImageTabComponent } from './layouts/cp-image-tab.component';
 import { LatestPostComponent } from './layouts/latest-post.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -52,12 +53,12 @@ import { RemoveHtmlPipe } from './pipes/remove-html.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent, HomeLayoutComponent, NotFoundComponent, LatestPostComponent, CategoryPostLayoutComponent, PostDetailsLayoutComponent, CountCategoryComponent,
+    AppComponent, HomeLayoutComponent, NotFoundComponent, LatestPostComponent, CategoryPostLayoutComponent, PostDetailsLayoutComponent,
     TruncatePipe, EscapeHtmlPipe, RemoveHtmlPipe,
-    InfiniteScrollerDirective, CpImageComponent
+    InfiniteScrollerDirective, CpImageComponent, CpImageTabComponent
   ],
   imports: [
-    BrowserModule, HttpModule, FormsModule, RouterModule,
+    BrowserModule, HttpModule, FormsModule, RouterModule, CountCategoryModule,
     //RouterModule.forRoot(routes) //, { enableTracing: true })
     routing,
     //MetaModule.forRoot()

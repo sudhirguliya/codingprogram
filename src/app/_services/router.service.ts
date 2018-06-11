@@ -104,7 +104,25 @@ export class RouterService {
 
         let body = this.serializeObj(obj);*/
 
-        return this.http.get(this._global.baseAPIUrl +'coding/postrandom?limit=5').map((res) => res.json());
+        return this.http.get(this._global.baseAPIUrl +'coding/postrandom?limit=5').map((res) => res.json())
+            .flatMap((posts) => {
+                //console.log(posts.post_data);
+                if (posts.post_data.length > 0) {
+                    return Observable.forkJoin(
+                      posts.post_data.map((cat: any) => {
+                          //console.log(cat.category_id);
+                        return this.http.get(this._global.baseAPIUrl +`coding/category?category_id=${cat.category_id}`)
+                          .map((res: any) => {
+                            let details: any = res.json();
+                            cat.details = details;
+                            return cat;
+                          });
+                      })
+                    );
+                    
+                  }
+            });
+           
     }
 
     // private helper methods
