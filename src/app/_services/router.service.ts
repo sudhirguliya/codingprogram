@@ -36,9 +36,26 @@ export class RouterService {
                   }
             });
     }
-
+ 
     getCountCategories() {
-        return this.http.get(this._global.baseAPIUrl +'coding/count_with_category').map((res) => res.json());
+        return this.http.get(this._global.baseAPIUrl +'coding/count_with_category').map((res) => res.json())
+        .flatMap((posts) => {
+                //console.log(posts.category_count);
+                if (posts.category_count.length > 0) {
+                    return Observable.forkJoin(
+                      posts.category_count.map((cat: any) => {
+                          //console.log(cat.category_id);
+                        return this.http.get(this._global.baseAPIUrl +`coding/clickpost?category_id=${cat.category_id}`)
+                          .map((res: any) => {
+                            let details: any = res.json();
+                            cat.details = details;
+                            return cat;
+                          });
+                      })
+                    );
+                    
+                  }
+            });
     }
 
     getCategories() {

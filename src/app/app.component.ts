@@ -7,7 +7,7 @@ declare var $:any;
   selector: 'app-root',
   //templateUrl: './app.component.html',
   //styleUrls: ['./app.component.css']
-  template: '<router-outletmm></router-outletmm>',
+  template: '<router-outletm></router-outletm>',
   //encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {

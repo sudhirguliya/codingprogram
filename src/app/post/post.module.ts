@@ -9,7 +9,7 @@ import { OwlModule } from 'ng2-owl-carousel';
 
 import { RouterModule } from '@angular/router';
 import { BreadcrumbsComponent } from './breadcrumb.component';
-import { CountCategoryShowComponent } from './count-category-show.component'
+import { CountCategoryModule } from '../directive/side_category/count-category.module';
 import { PostComponent } from './post.component';
 import { PostHtmlPipe } from './post-html.pipe';
 
@@ -21,8 +21,9 @@ import { PostHtmlPipe } from './post-html.pipe';
     ReactiveFormsModule,
     PostRoutingModule,
     RouterModule,
-    OwlModule
+    OwlModule,
+    CountCategoryModule
   ],
-  declarations: [ PostComponent, PostHtmlPipe, CountCategoryShowComponent, BreadcrumbsComponent],
+  declarations: [ PostComponent, PostHtmlPipe, BreadcrumbsComponent],
 })
 export class PostModule { }

@@ -18,32 +18,46 @@ import { PagerService } from '../../_services/pager.service';
   selector: 'count-category',
   //template : 'test menu'
   template: `<ul class="cat-list">
-              <li class="clearfix" *ngFor="let item of allCountCategories"><a href="#">{{item.category_name}} <span>({{item.total}})</span></a></li>
+              <li class="clearfix" *ngFor="let item of allCountCategories; let i = index"><a [routerLink]="this.subcategory ? ['/', this.category[i], this.subcategory[i]] : ['/', this.category[i]]">{{item.category_name}}<span>({{item.total}})</span></a></li>
             </ul>`,
   //changeDetection: ChangeDetectionStrategy.OnPush,
   //inputs: ['cpImage']
 })
 
 export class CountCategoryComponent {
-	constructor(private http:Http, private pagerService: PagerService, private _global: AppGlobals, private router: Router, private route: ActivatedRoute, private location: Location, private service: RouterService,) {}
+	constructor(private http:Http, private pagerService: PagerService, private _global: AppGlobals, private router: Router, private route: ActivatedRoute, private location: Location, private service: RouterService) {}
 	src : any;
   allCountCategories : any;
   private post_url : any;
+  category : any = [];
+  subcategory : any = [];
 
 	//@Input() cpImage: any;
 	
 	ngOnInit() {
 	  this.service.getCountCategories().subscribe(countcategory => {
-      console.log(countcategory);
-      if (countcategory.status == true) {
+       //console.log(countcategory);
         //console.log('hi');
-        this.allCountCategories = countcategory.category_count;
+        this.allCountCategories = countcategory;
         //console.log(this.allCountCategories);
-      } else {
-        
-        return false;
-      }
+        // start here for getting category url's
+        this.allCountCategories.forEach((product, index) => {
+          //console.log(product.details.post_url);
+
+          if(product.details.post_url.subcategory){
+                  this.category.push(product.details.post_url.category);
+                  this.subcategory.push(product.details.post_url.subcategory);
+                }else{
+                  this.category.push(product.details.post_url.category);
+                  this.subcategory = '';
+                  //console.log(this.category);
+                }
+
+        });
+       
     });
+
+
 	}
 
   clickPost(category_id:number, post:string){
