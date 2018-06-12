@@ -30,7 +30,7 @@ export class LatestPostShowComponent {
     }
 
     // array of all items to be paged
-    private allItems: any[];
+    private allItems: any = [];
     private catShow : any[];
     loading = false;
     // pager object
@@ -168,19 +168,19 @@ export class LatestPostShowComponent {
                   }
             })
             .subscribe((res) => 
-                {
-                    this.allItems = res;
-                    this.loading = false;
-                    //console.log(res);
-                    //console.log(this.allItems[0].details.category_detail.category_name)
-                    // initialize to page 1
-                    if(this.allItems){
-                        this.setPage(1);
-                    }
-                },
-                ()=>this.loading = false);
+            {
+                this.allItems = res;
+                this.loading = false;
+                //console.log(res);
+                //console.log(this.allItems[0].details.category_detail.category_name)
+                // initialize to page 1
+                if(this.allItems){
+                    this.setPage(1);
+                }
+            },
+            ()=>this.loading = false);
             //console.log(this.contract);
-        }
+    }
 
     clickPost(category_id:number, post:string){
         //console.log(this._global.baseAPIUrl +`coding/clickpost?category_id=${category_id}`);
@@ -220,7 +220,7 @@ export class LatestPostShowComponent {
         this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }
 
-    /*ngOnDestroy() {
-    this.category_slug.unsubscribe();
-  }*/
+    ngOnDestroy() {
+      this.allItems = null;
+    }
 }

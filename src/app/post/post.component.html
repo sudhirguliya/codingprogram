@@ -43,7 +43,8 @@
                                 <div class="post-share-options">
                                     <div class="tags clearfix"><a href="#">Design</a> <a href="#">Fashion</a> <a href="#">Money</a></div>
                                 </div>
-                                
+                                Message: {{ message }}
+                                <app-child (messageEvent)="receiveMessage($event)"></app-child>
                                 <!--New Article-->
                                 <ul class="new-article clearfix">
                                     <li><a href="#"><span class="fa fa-angle-left"></span> &ensp; &ensp; &ensp; &ensp; Previous Article</a></li>
@@ -79,16 +80,7 @@
                                      <!--News Block Two-->
                                      <div class="news-block-two small-block" *ngFor="let item of allItems;let i = index">
                                         <div class="inner-box">
-                                            <div class="image">
-                                                <a href="#"><img src="assets/images/resource/news-40.jpg" alt="" /></a>
-                                                <div class="category"><a href="#">{{item.details.category_detail.category_name}}</a></div>
-                                            </div>
-                                            <div class="lower-box">
-                                                <h3><a href="#"> {{item.page_title}} </a></h3>
-                                                <!-- <ul class="post-meta">
-                                                    <li><span class="icon fa fa-clock-o"></span>April 03, 2016</li>
-                                                </ul> -->
-                                            </div>
+                                            <image-slider [cpImage]="item" ></image-slider>
                                         </div>
                                     </div>
                                  </owl-carousel>

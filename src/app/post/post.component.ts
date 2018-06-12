@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Http, Headers, RequestOptions, Response  } from '@angular/http';
+import { ShowArticleComponent } from "./show-article.component";
 import { Title, Meta } from '@angular/platform-browser';
 import { RouterService } from '../_services/router.service';
 import { AppGlobals } from '../app.global.service';
@@ -29,6 +30,9 @@ export class PostComponent implements OnInit {
 
     allItems : any;
     sliderOptions : any;
+
+    //@ViewChild(ShowArticleComponent) child;
+
     constructor(private title: Title, private meta: Meta, private route: ActivatedRoute, private router: Router, private http: Http, private service: RouterService, private _global: AppGlobals ) {
 
        
@@ -95,6 +99,12 @@ export class PostComponent implements OnInit {
         });
 
     }
+
+    message:string;
+
+  receiveMessage($event) {
+    this.message = $event
+  }
 
   getPostWithCategory(category_id : number = 0) {
         var url;
