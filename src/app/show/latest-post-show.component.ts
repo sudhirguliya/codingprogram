@@ -56,6 +56,7 @@ export class LatestPostShowComponent {
     }
 
     ngOnChanges(changes: SimpleChanges) {
+        this.loading = true;
       //console.log(changes);
       if (changes['options']) {
           this.category_slug = this.options;
