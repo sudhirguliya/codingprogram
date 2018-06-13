@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Http, Headers, RequestOptions, Response  } from '@angular/http';
-import { ShowArticleComponent } from "./show-article.component";
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+//import { ShowArticleComponent } from "./show-article.component";
 import { Title, Meta } from '@angular/platform-browser';
 import { RouterService } from '../_services/router.service';
 import { AppGlobals } from '../app.global.service';
@@ -24,6 +25,10 @@ export class PostComponent implements OnInit {
 
     private blogpostId: number;
     private categoryId: number;
+    category : string;
+    subcategory : string;
+    post_url : any;
+    buttonDisabled : boolean = false;
     metatitle: string;
     description: string;
     keyboards: string;
@@ -33,7 +38,7 @@ export class PostComponent implements OnInit {
 
     //@ViewChild(ShowArticleComponent) child;
 
-    constructor(private title: Title, private meta: Meta, private route: ActivatedRoute, private router: Router, private http: Http, private service: RouterService, private _global: AppGlobals ) {
+    constructor(private title: Title, private meta: Meta, private location : Location, private route: ActivatedRoute, private router: Router, private http: Http, private service: RouterService, private _global: AppGlobals ) {
 
        
        this.meta.addTag({ name: 'author', content: 'Sudhir Chaudhary' });
@@ -68,6 +73,7 @@ export class PostComponent implements OnInit {
 
       //this.getPostWithCategory();
       this.sliderOptions = { margin: 5, dots: false, navigation: true, nav: true, navText: [ '<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>' ], autoplay: true, loop: true, autoplayTimeout: 2000, autoplayHoverPause: true, lazyLoad: true, responsive:{ 0:{ items: 1 }, 600:{ items: 2 }, 960:{ items: 3 }, 1200:{ items: 3 } } };
+      
       this.baseUrl = this._global.baseAppUrl; 
 
       this.route.params.pipe(
@@ -99,12 +105,72 @@ export class PostComponent implements OnInit {
         });
 
     }
+    
+    nextClick() {
+      //console.log('Next '+this.blogpostId);
+      let post_id = +this.blogpostId+1;
+      //console.log(post_id);
+      this.http.get(this._global.baseAPIUrl +`coding/getpost?post_id=${post_id}`)
+            .map((response: Response) => response.json())
+            .subscribe(data => {
+                //console.log(data);
+                if(data.status == true){
+                  if(data.post_url.subcategory){
+                    this.category = data.post_url.category;
+                    this.subcategory = data.post_url.subcategory;
 
-    message:string;
+                    this.post_url = this.category+'/'+this.subcategory+'/post/'+data.post_slug;
+                  }else{
+                    this.category = data.post_url.category;
+                    this.subcategory = '';
 
-  receiveMessage($event) {
-    this.message = $event
-  }
+                    this.post_url = this.category+'/post/'+data.post_slug;
+                  }
+
+                  // set items to json response
+                
+                  //console.log(this.post_url);
+                  this.location.replaceState('/'); 
+                  this.router.navigate([this.post_url], {replaceUrl:true});
+                }else{
+                  this.buttonDisabled = true;
+                }
+                
+            });
+    }
+
+    previousClick() {
+      //console.log('Next '+this.blogpostId);
+      let post_id = +this.blogpostId-1;
+      //console.log(post_id);
+      this.http.get(this._global.baseAPIUrl +`coding/getpost?post_id=${post_id}`)
+            .map((response: Response) => response.json())
+            .subscribe(data => {
+                //console.log(data);
+                if(data.status == true){
+                  if(data.post_url.subcategory){
+                    this.category = data.post_url.category;
+                    this.subcategory = data.post_url.subcategory;
+
+                    this.post_url = this.category+'/'+this.subcategory+'/post/'+data.post_slug;
+                  }else{
+                    this.category = data.post_url.category;
+                    this.subcategory = '';
+
+                    this.post_url = this.category+'/post/'+data.post_slug;
+                  }
+
+                  // set items to json response
+                
+                  //console.log(this.post_url);
+                  this.location.replaceState('/'); 
+                  this.router.navigate([this.post_url], {replaceUrl:true});
+                }else{
+                  this.buttonDisabled = true;
+                }
+                
+            });
+    }
 
   getPostWithCategory(category_id : number = 0) {
         var url;
