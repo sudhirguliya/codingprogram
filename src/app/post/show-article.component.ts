@@ -1,20 +1,21 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-child',
+  selector: 'show-article',
   template: `
-      <button (click)="sendMessage()">Send Message</button>
+      <ul class="new-article clearfix">
+          <li><a href="#"><span class="fa fa-angle-left"></span> &ensp; &ensp; &ensp; &ensp; Previous Article</a></li>
+          <li><a href="#">Next Article &ensp; &ensp; &ensp; &ensp; <span class="fa fa-angle-right"></span></a></li>
+      </ul>
   `
 })
 export class ShowArticleComponent {
 
-   message: string = "Hola Mundo!"
-
-  @Output() messageEvent = new EventEmitter<string>();
+  @Input() article : any;
 
   constructor() { }
 
-  sendMessage() {
-    this.messageEvent.emit(this.message)
+  ngOnInit() {
+      console.log(this.article);
   }
 }
