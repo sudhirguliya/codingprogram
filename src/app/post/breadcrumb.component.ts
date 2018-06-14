@@ -11,7 +11,7 @@ interface IBreadcrumb {
 @Component({
   selector: "breadcrumbs",
   template: `
-    
+  
       <li><a routerLink="/">Home</a></li>
       <li *ngFor="let breadcrumb of breadcrumbs">
         <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
