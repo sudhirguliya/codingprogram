@@ -12,12 +12,11 @@ interface IBreadcrumb {
   selector: "breadcrumbs",
   template: `
     
-      <li><a routerLink="" class="breadcrumb">Home</a></li>
+      <li><a routerLink="/">Home</a></li>
       <li *ngFor="let breadcrumb of breadcrumbs">
         <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
       </li>
-    
-  `
+    `
 })
 export class BreadcrumbsComponent implements OnInit {
 
