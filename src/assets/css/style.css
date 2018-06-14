@@ -1624,10 +1624,11 @@ img{
 	text-transform:capitalize;
 	min-width:30px;
 	background:none;
+	padding: 1px 5px;
 	color:#999999;
 	font-weight:400;
 	text-align:center;
-	border:2px solid #f3f3f3;
+	border:1px solid #f3f3f3;
 	transition:all 500ms ease;
 	-webkit-transition:all 500ms ease;
 	-ms-transition:all 500ms ease;
@@ -1641,6 +1642,14 @@ img{
 	color:#ffffff;
 	border-color:#e73f43;
 	background-color:#e73f43;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #54b8e1;
+    border-color: #54b8e1;
 }
 
 .styled-pagination.centered{

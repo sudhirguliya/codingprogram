@@ -36,7 +36,7 @@ a,
 .main-footer .footer-bottom .copyright-section .footer-nav li a:hover,
 .main-menu .navigation > li.mega-menu > .mega-menu-bar .owl-nav .owl-prev:hover,
 .main-menu .navigation > li.mega-menu > .mega-menu-bar .owl-nav .owl-next:hover{
-	color:#e73f43;
+	color:#54b8e1;
 }
 
 /*Background Color*/
@@ -111,7 +111,7 @@ a,
 .related-items .owl-nav .owl-prev:hover, .related-items .owl-nav .owl-next:hover,
 .demo-banner .btns-box .purchase-btn,
 .demo-banner .btns-box .demo-btn:hover{
-	background-color:#e73f43;
+	background-color:#a0bd12;
 }
 
 
@@ -153,12 +153,12 @@ a,
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus{
-	border-color:#e73f43;
+	border-color:#54b8e1;
 }
 
 .main-slider-six .default-tab-box .tab-btns .tab-btn:hover::after,
 .main-slider-six .default-tab-box .tab-btns .tab-btn.active-btn:after{
-	border-right-color:#e73f43;
+	border-right-color:#54b8e1;
 }
 
 /*RGBA Color Light*/
@@ -190,7 +190,7 @@ a,
 	.main-menu .navbar-collapse > .navigation > li.current > a,
 	.main-menu .navbar-collapse > .navigation > li.current-menu-item > a,
 	.header-style-two.inner-header .main-menu .navigation > li > a{
-		background-color:#e73f43;
+		background-color:#54b8e1;
 	}
 	
 }

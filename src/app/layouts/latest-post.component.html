@@ -1,6 +1,6 @@
 <!--Content Side-->
                 <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <img *ngIf="loading" style="display: block;margin-left: auto;margin-right: auto;" src="assets/images/fancybox/fancybox_loading.gif">
+                    <!-- <img *ngIf="loading" style="display: block;margin-left: auto;margin-right: auto;" src="assets/images/AjaxLoader.gif"> -->
                     <!--Sec Title-->
                         <div class="sec-title">
                             <h2>Latest Post <span *ngIf="categoryName" > of {{categoryName}}</span></h2>
@@ -20,7 +20,9 @@
                                 </div>
                             </div>
                             
-                        </div>  
+                        </div> 
+
+                        <img *ngIf="loading" style="display: block;margin-left: auto;margin-right: auto;" src="assets/images/AjaxLoader.gif">
                     </div>
 
                     <!-- <div class="contain" appInfiniteScroller scrollPerecnt="70" immediateCallback="true" [scrollCallback]="scrollCallback">

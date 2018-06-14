@@ -58,6 +58,7 @@ export class LatestPostComponent implements OnInit {
     }
 
     getPosts() {
+      this.loading = true;
         return this.service.getLatestPost(this.currentPage).do(this.processData);
     }
 
@@ -65,6 +66,7 @@ export class LatestPostComponent implements OnInit {
         //console.log(news);
         this.currentPage++;
         this.news = this.news.concat(news);
+        this.loading = false;
         //this.allNews = this.news[0].user_status;
         //this.allNews.push(this.news[0].post_data);
         //console.log(this.news);
@@ -72,7 +74,7 @@ export class LatestPostComponent implements OnInit {
       }
 
     ngOnInit() {
-        
+        this.loading = true;
     }
 
    /* ngOnDestroy() {
