@@ -20,6 +20,7 @@ import { CategoryResolve } from './_services/category-resolve.service';
 import { SubCategoryResolve } from './_services/subcategory-resolve.service';
 import { PostResolve } from './_services/post-resolve.service';
 import { PagerService } from './_services/pager.service';
+import { LinkService } from './_services/meta-link.service'
 //import { GlobalEventsManager } from './_services/global-events-manager'
 // Layouts
 import { HomeLayoutComponent } from './layouts/home-layout.component';
@@ -65,7 +66,7 @@ import { RemoveHtmlPipe } from './pipes/remove-html.pipe';
   ],
   //exports: [LatestPostComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [AppGlobals,RouterService, CategoryResolve, SubCategoryResolve, PostResolve, PagerService],
+  providers: [AppGlobals,RouterService, CategoryResolve, SubCategoryResolve, PostResolve, PagerService, LinkService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

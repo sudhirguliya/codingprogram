@@ -4,6 +4,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 //import { ShowArticleComponent } from "./show-article.component";
 import { Title, Meta } from '@angular/platform-browser';
 import { RouterService } from '../_services/router.service';
+import { LinkService } from '../_services/meta-link.service';
 import { AppGlobals } from '../app.global.service';
 import { PostDetails } from '../shared/models/postdetails';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -38,18 +39,13 @@ export class PostComponent implements OnInit {
 
     //@ViewChild(ShowArticleComponent) child;
 
-    constructor(private title: Title, private meta: Meta, private location : Location, private route: ActivatedRoute, private router: Router, private http: Http, private service: RouterService, private _global: AppGlobals ) {
+    constructor(private title: Title, private meta: Meta, private location : Location, private linkService : LinkService, private route: ActivatedRoute, private router: Router, private http: Http, private service: RouterService, private _global: AppGlobals ) {
 
-       
+       //this.linkService.addTag( { rel: 'canonical', href: 'http://blogs.example.com/blah/nice' } );
+
        this.meta.addTag({ name: 'author', content: 'Sudhir Chaudhary' });
         const author = this.meta.getTag('name=author');
         this.meta.removeTagElement(author);
-
-        const description = this.meta.getTag('name=description');
-        this.meta.removeTagElement(description);
-
-        const keywords = this.meta.getTag('name=keywords');
-        this.meta.removeTagElement(keywords); 
 
        /*this.route.params
           .map((data) => data['post'])
@@ -93,6 +89,16 @@ export class PostComponent implements OnInit {
                     this.metatitle = item.post_meta.meta_title;
                     this.description = item.post_meta.meta_description;
                     this.keyboards = item.post_meta.meta_keywords;
+
+                    const description = this.meta.getTag('name=description');
+                    this.meta.removeTagElement(description);
+
+                    const keywords = this.meta.getTag('name=keywords');
+                    this.meta.removeTagElement(keywords);
+
+                    this.linkService.removeTag('rel=canonical');
+
+                    this.linkService.createLinkForCanonicalURL();
 
                     this.title.setTitle(this.metatitle);
                     this.meta.addTag({ name: 'description', content: this.description });
