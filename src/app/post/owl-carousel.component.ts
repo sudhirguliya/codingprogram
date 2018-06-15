@@ -18,7 +18,7 @@ import { PagerService } from '../_services/pager.service';
   selector: 'image-slider',
   //template : 'test menu'
   template: `<div class="image">
-                        <a href="#"><img src="{{this.src}}" alt="{{cpImage.page_name}}" /></a>
+                        <a [routerLink]="this.subcategory ? ['/', this.category, this.subcategory, 'post', cpImage.page_name] : ['/', this.category, 'post', cpImage.page_name]"><img src="{{this.src}}" alt="{{cpImage.page_name}}" /></a>
                         <div class="category"><a [routerLink]="this.subcategory ? ['/', this.category, this.subcategory] : ['/', this.category]">{{cpImage.details.category_detail.category_name}}</a></div>
                     </div>
                     <div class="lower-box">

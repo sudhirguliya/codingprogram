@@ -1,14 +1,14 @@
 import { Component, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-declare var $:any;
+declare var $: any;
 
 @Component({
   moduleId: module.id,
   selector: 'app-root',
-  //templateUrl: './app.component.html',
-  //styleUrls: ['./app.component.css']
+  // templateUrl: './app.component.html',
+  // styleUrls: ['./app.component.css']
   template: '<router-outletm></router-outletm>',
-  //encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   title = 'Goconsult!';
@@ -16,12 +16,12 @@ export class AppComponent {
 
 
   ngOnInit(): void {
-  	//alert($('.app-loading').length);
-    //if($('.app-loading').length){
+  // alert($('.app-loading').length);
+  // if($('.app-loading').length){
       $('.app-loading').delay(200).fadeOut(500);
-    //}
+  // }
   }
-  
+
   selectedIndex = -1;
 
   setSelected(id: number) {

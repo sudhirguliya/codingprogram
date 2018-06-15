@@ -12,7 +12,7 @@ declare var $:any;
   //template: '<router-outlet></router-outlet>',
   templateUrl: './home-layout.component.html'
 })
-export class HomeLayoutComponent implements OnInit {
+export class HomeLayoutComponentt implements OnInit {
 
   constructor(private router: Router, private location : Location, private http : Http, private title: Title, private meta: Meta, private _elRef : ElementRef, private myBtn: ElementRef, private _global: AppGlobals, private routerservice : RouterService) { }
 

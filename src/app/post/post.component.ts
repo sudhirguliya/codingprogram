@@ -81,7 +81,19 @@ export class PostComponent implements OnInit {
           this.postdesc = postdetails.post_detail;
           this.blogpostId = postdetails.post_detail.id;
           this.categoryId = postdetails.post_detail.category_id;
-          //console.log(this.blogpostId) 
+          //console.log(this.blogpostId)
+
+          this.title.setTitle(postdetails.post_detail.page_title+' - Coding Programmer');
+
+          const description = this.meta.getTag('name=description');
+          this.meta.removeTagElement(description);
+
+          const keywords = this.meta.getTag('name=keywords');
+          this.meta.removeTagElement(keywords);
+
+          this.linkService.removeTag('rel=canonical');
+          this.linkService.createLinkForCanonicalURL();
+
           this.service.getMetaPost(this.blogpostId)
             .subscribe(item => {
                   //console.log(item.post_meta);
@@ -90,17 +102,7 @@ export class PostComponent implements OnInit {
                     this.description = item.post_meta.meta_description;
                     this.keyboards = item.post_meta.meta_keywords;
 
-                    const description = this.meta.getTag('name=description');
-                    this.meta.removeTagElement(description);
-
-                    const keywords = this.meta.getTag('name=keywords');
-                    this.meta.removeTagElement(keywords);
-
-                    this.linkService.removeTag('rel=canonical');
-
-                    this.linkService.createLinkForCanonicalURL();
-
-                    this.title.setTitle(this.metatitle);
+                    this.title.setTitle(this.metatitle+' - Coding Programmer');
                     this.meta.addTag({ name: 'description', content: this.description });
                     this.meta.addTag({ name: 'keywords', content: this.keyboards });
                   }
